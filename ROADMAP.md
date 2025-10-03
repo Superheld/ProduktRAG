@@ -6,65 +6,6 @@
 **Grund:** Erste Version hatte strukturelle Probleme bei Datenqualität und Chunking-Strategie
 **Aktueller Fokus:** Saubere Normalisierung als Fundament für hochwertiges RAG-System
 
----
-
-## Aktuelle Architektur-Entscheidungen
-
-### Chunk-Strategie (NEU)
-Drei-Chunk-Hierarchie für optimales Retrieval:
-
-**1. Overview-Chunk (1x pro Produkt)**
-- Zusammenfassung vom LLM generiert
-- Enthält Kategorie + Hersteller in Metadata
-- Für breite Produkt-Queries
-
-**2. Description-Chunks (mehrere pro Produkt)**
-- LLM-bereinigte Absätze ohne Marketing/Firmengeschichte
-- Semantisch kohärente Einheiten
-- Für feature-spezifische Queries
-
-**3. Spec-Group-Chunks (mehrere pro Produkt)**
-- Gruppiert nach Kategorie (Abmessungen, Gewicht, etc.)
-- Normalisierte Einheiten (cm, kg, l)
-- Strukturierte Keys für Filtering
-- Für technische Multi-Kriterien-Suche
-
-### LLM-Agenten-Pipeline (NEU)
-
-**Summary-Agent:**
-- Input: Komplettes Produkt
-- Output: `{summary, category, manufacturer}`
-- Generiert Overview-Chunk
-
-**Description-Agent:**
-- Input: Rohe Produktbeschreibung
-- Output: Array von bereinigten Absätzen
-- Entfernt Marketing, Herstellergeschichte, Redundanz
-
-**Specs-Agent:**
-- Input: Array von raw specs
-- Output: Gruppierte, normalisierte Specs
-- Deutsche Gruppennamen mit Einheit: `"Abmessungen-cm": {"Außenmaße_Breite": 67, ...}`
-- Automatische Umrechnung: g→kg, ml→l, mm→cm
-
-### Warum diese Änderungen?
-
-**Problem der alten Version:**
-- ❌ Leere/sehr kurze Chunks (z.B. "## Kirsch")
-- ❌ Zu granulare Specs (jede einzeln → schlechtes Multi-Kriterien-Retrieval)
-- ❌ Marketing-Noise in Descriptions
-- ❌ Inkonsistente Einheiten
-- ❌ Keine hierarchische Struktur
-
-**Vorteile der neuen Architektur:**
-- ✅ Overview für schnellen Produkt-Überblick
-- ✅ Saubere, fokussierte Description-Chunks
-- ✅ Gruppierte Specs für besseres Matching
-- ✅ Normalisierte Daten (cm, kg, l statt mm/cm/m, g/kg, ml/l)
-- ✅ Strukturierte Metadata für Hybrid-Search
-
----
-
 ## Current Status
 
 ### ✅ COMPLETED: Infrastructure & Tooling
@@ -73,26 +14,38 @@ Drei-Chunk-Hierarchie für optimales Retrieval:
 - Pandas-basierte Datenverarbeitung
 - JSONL-Output-Format für Chunks
 
-### 🔄 IN PROGRESS: Phase 1 - Data Normalization & Chunking
+### ✅ COMPLETED: Phase 1 - Data Normalization & Chunking
 
-**Aktueller Stand:**
-- ✅ Raw-Data vorhanden (152 Produkte)
-- ✅ Agent-Prompts finalisiert und getestet
-- ✅ Code-Struktur für 3-Agenten-Pipeline
-- 🔄 Full-Run durch alle 152 Produkte (in Arbeit)
-- 📋 Qualitätskontrolle der Agent-Outputs
+**Erledigt:**
+- ✅ Raw-Data bereinigt (leere Produkte entfernt)
+- ✅ Drei LLM-Agenten implementiert und getestet:
+  - **summs_agent.md**: Generiert Zusammenfassung + extrahiert Category/Manufacturer
+  - **descs_agent.md**: Bereinigt Produktbeschreibungen von Marketing-Floskeln
+  - **specs_agent.md**: Normalisiert technische Specs mit zwei Input-Formaten (Array + Text-Fallback)
+- ✅ Notebook refactored:
+  - `chunk_id` für alle Chunks (Format: `{product_id}_{type}_{index}`)
+  - `base_metadata` mit spread operator (`**`) für DRY-Code
+  - Fallback-Handling für Produkte ohne Specs
+  - `enumerate()` für Index-Tracking
+- ✅ Schema-Verbesserungen:
+  - specs_agent verarbeitet jetzt Array-Input UND Text-Input konsistent
+  - Alle 12 Spec-Gruppen immer im Output (auch wenn leer)
+  - Verstärkte Prompt-Regeln für konsistentes Output-Schema
 
 **Output-Struktur:**
 ```
 1-normalisation/
-├── overview_chunks.jsonl      # 152 Chunks (1 pro Produkt)
-├── description_chunks.jsonl   # ~600-800 Chunks (mehrere pro Produkt)
-└── specs_chunks.jsonl         # ~1200-1500 Chunks (9 Kategorien x ~150 Produkte)
+├── summs_chunks.jsonl      # Summary chunks (1 pro Produkt)
+├── descs_chunks.jsonl      # Description chunks (mehrere pro Produkt)
+└── specs_chunks.jsonl      # Specs chunks (gruppiert nach Kategorien)
 ```
 
-**Erwartete Chunk-Anzahl:** ~2000-2500 (vs. alte 4618 mit vielen schlechten)
+**Key Learnings:**
+- LLM benötigt sehr explizite Schema-Definitionen (Beispiele > abstrakte Regeln)
+- Fallback-Handling wichtig für fehlende/inkonsistente Daten
+- Metadata-Struktur sollte früh finalisiert werden (chunk_id, base_metadata)
 
-### 📋 TODO: Phase 2 - Embedding Generation
+### 🎯 NEXT: Phase 2 - Embedding Generation
 
 **Ziel:** Chunks in Vektoren umwandeln mit solidem deutschen Model
 
@@ -101,24 +54,35 @@ Drei-Chunk-Hierarchie für optimales Retrieval:
   - Robustes Multilingual-Model mit sehr guter Performance
   - Gut für deutsche technische Fachsprache
   - 1024 Dimensionen
-  - Schnell genug für ~2500 Chunks
+  - Schnell genug für alle Chunks
 
 **Tasks:**
-1. Model laden und vorbereiten
-2. Batch-Processing aller normalisierten Chunks (summs + descs + specs)
-3. Normalisierung der Embeddings (L2-Normalisierung)
-4. Speicherung als `.npy` für schnellen Load
-5. Qualitätschecks (keine NaNs, korrekte Dimensionen)
+1. ✅ Chunks aus Phase 1 vorhanden (summs_chunks.jsonl, descs_chunks.jsonl, specs_chunks.jsonl)
+2. 📋 Model laden und vorbereiten (`sentence-transformers`)
+3. 📋 Batch-Processing aller Chunks:
+   - Alle drei JSONL-Files kombinieren
+   - Embedding für jedes `document` Field generieren
+   - L2-Normalisierung anwenden
+4. 📋 Speicherung:
+   - Embeddings als `.npy` Array
+   - Chunks mit IDs als `.jsonl` (für Mapping)
+   - Metadata-File mit Model-Info
+5. 📋 Qualitätschecks:
+   - Keine NaNs/Inf-Werte
+   - Korrekte Dimensionen [N, 1024]
+   - Semantische Plausibilität (ähnliche Produkte → ähnliche Vektoren)
 
 **Expected Output:**
 ```
 2-embedding/
-├── embeddings_e5_large.npy          # ~20-30MB
-├── chunks_combined.jsonl            # Alle Chunks in einem File
-└── embedding_metadata.json          # Model-Info, Timestamp, Dimensionen
+├── embeddings_e5_large.npy          # Vector array [N, 1024]
+├── chunks_combined.jsonl            # Alle Chunks mit chunk_id
+└── embedding_metadata.json          # Model name, dimensions, timestamp
 ```
 
-**Dimensions:** [~2500, 1024]
+**Nächste Schritte nach Fertigstellung:**
+- Embedding-Qualität visuell prüfen (t-SNE/UMAP)
+- Zur Phase 3 (Indexing) übergehen
 
 ### 📋 TODO: Phase 3 - Vector Database Integration
 
@@ -382,16 +346,16 @@ Siehe `_docs/` Ordner für:
 ---
 
 *Last updated: 2025-10-03*
-*Status: Phase 1 (Chunking) in Arbeit - 60% Complete*
+*Status: Phase 1 (Chunking) ✅ Complete | Phase 2 (Embedding) 🎯 Next*
 
 ---
 
 ## Quick Reference: Pipeline-Überblick
 
 ```
-Phase 1: Chunking ✅ (in Arbeit)
+Phase 1: Chunking ✅ DONE
    ↓
-Phase 2: Embedding (multilingual-e5-large)
+Phase 2: Embedding 🎯 NEXT (multilingual-e5-large)
    ↓
 Phase 3: Indexing (ChromaDB)
    ↓
@@ -401,3 +365,10 @@ Phase 5: Model Evaluation (nur falls Phase 4 schlecht)
    ↓
 Phase 6: Production RAG
 ```
+
+### Phase 1 Summary (Completed)
+- 3 LLM-Agenten für Normalisierung (summs, descs, specs)
+- Chunk-Schema mit chunk_id und strukturierter Metadata
+- Specs-Agent mit Dual-Input-Support (Array + Text)
+- Bereinigtes Dataset ohne leere Produkte
+- Output: 3x JSONL-Files (summs, descs, specs)
