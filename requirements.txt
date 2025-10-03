@@ -1,0 +1,5 @@
+sentence_transformers
+tqdm
+pandas
+dotenv
+mistralai
