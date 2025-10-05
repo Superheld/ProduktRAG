@@ -45,82 +45,82 @@
 - Fallback-Handling wichtig für fehlende/inkonsistente Daten
 - Metadata-Struktur sollte früh finalisiert werden (chunk_id, base_metadata)
 
-### 🎯 NEXT: Phase 2 - Embedding Generation
+### ✅ COMPLETED: Phase 2 - Embedding Generation
 
-**Ziel:** Chunks in Vektoren umwandeln mit solidem deutschen Model
+**Ziel:** Chunks in Vektoren umwandeln mit solidem deutschen Model ✅
 
-**Model-Auswahl:**
-- **Start:** `intfloat/multilingual-e5-large`
-  - Robustes Multilingual-Model mit sehr guter Performance
-  - Gut für deutsche technische Fachsprache
-  - 1024 Dimensionen
-  - Schnell genug für alle Chunks
+**Model-Wahl:**
+- **Entscheidung:** `deepset/gbert-large` (deutsch-only)
+- 1024 Dimensionen, normalisierte Embeddings
+- Batch-Processing mit `sentence-transformers`
 
-**Tasks:**
-1. ✅ Chunks aus Phase 1 vorhanden (summs_chunks.jsonl, descs_chunks.jsonl, specs_chunks.jsonl)
-2. 📋 Model laden und vorbereiten (`sentence-transformers`)
-3. 📋 Batch-Processing aller Chunks:
-   - Alle drei JSONL-Files kombinieren
-   - Embedding für jedes `document` Field generieren
-   - L2-Normalisierung anwenden
-4. 📋 Speicherung:
-   - Embeddings als `.npy` Array
-   - Chunks mit IDs als `.jsonl` (für Mapping)
-   - Metadata-File mit Model-Info
-5. 📋 Qualitätschecks:
-   - Keine NaNs/Inf-Werte
-   - Korrekte Dimensionen [N, 1024]
-   - Semantische Plausibilität (ähnliche Produkte → ähnliche Vektoren)
+**Was erledigt wurde:**
+1. ✅ Alle 3 Chunk-Types kombiniert (summs, descs, specs)
+2. ✅ Datenbereinigung:
+   - Whitespace entfernt (`.str.strip()`)
+   - Leere Dokumente gefiltert (`len > 10`)
+   - Duplikate entfernt (basierend auf `document`)
+3. ✅ Batch-Embedding:
+   - 1800 Chunks in 17:40 Min (batch_size=16)
+   - L2-Normalisierung aktiviert
+   - CPU-basiert (Intel GPU Setup zu komplex für jetzt)
+4. ✅ Validierung implementiert:
+   - Längen-Check (Embeddings ↔ Chunks)
+   - 1% Stichprobe mit Norm-Check (alle ~1.0000 ✅)
+   - Re-Encode Similarity-Test (alle >0.9999 ✅)
+5. ✅ Speicherung:
+   - `embeddings_gbert.npy` - Binary numpy array (1800, 1024)
+   - `chunks_metadata.jsonl` - Alle Chunks mit Metadata
+   - Index-Mapping: `embeddings[i]` ↔ `chunks_metadata.iloc[i]`
 
-**Expected Output:**
+**Output-Struktur:**
 ```
 2-embedding/
-├── embeddings_e5_large.npy          # Vector array [N, 1024]
-├── chunks_combined.jsonl            # Alle Chunks mit chunk_id
-└── embedding_metadata.json          # Model name, dimensions, timestamp
+├── embeddings_gbert.npy          # Vector array (1800, 1024)
+├── chunks_metadata.jsonl         # Alle Chunks mit chunk_id
+└── 1-embeddings.ipynb            # Notebook mit Pipeline + Validation
 ```
 
-**Nächste Schritte nach Fertigstellung:**
-- Embedding-Qualität visuell prüfen (t-SNE/UMAP)
-- Zur Phase 3 (Indexing) übergehen
+**Key Learnings:**
+- Index-basiertes Mapping (statt SQL-Joins) ist simpel und effizient
+- Batch-Processing ist 10-50x schneller als einzelne Embeddings
+- Validierung durch Re-Encoding gibt 100% Sicherheit
+- `.npy` für Embeddings + `.jsonl` für Metadata ist Best Practice
+- Norm ≈ 1.0 bei normalisierten Embeddings bestätigt Korrektheit
 
-### 📋 TODO: Phase 3 - Vector Database Integration
+**Achievements:**
+- 🎯 1800 saubere, validierte Embeddings
+- 🎯 Robuste Pipeline mit Fehler-Checks
+- 🎯 Reproduzierbar und gut dokumentiert
+- 🎯 Bereit für Phase 3 (Retrieval)
 
-**Technology:** ChromaDB (einfach, lokal, perfekt für Lernen)
+### ✅ COMPLETED: Phase 3 - Indexing with ChromaDB
 
-**Setup:**
-1. ChromaDB installieren
-2. Collection erstellen mit e5-large-Embeddings
-3. Alle Chunks mit Metadata laden
-4. Index aufbauen
+**Entscheidung:** ChromaDB (Production-ready, Metadata-Filtering, einfache Integration)
 
-**Schema:**
-```python
-chunk = {
-    "document": "Abmessungen (cm) - Außenmaße Breite: 67, Tiefe: 72, Höhe: 132",
-    "embedding": [...],  # 1024-dim vector
-    "metadata": {
-        "chunk_type": "overview|description|specs",
-        "product_id": "LABO-288",
-        "product_title": "Kirsch LABO-288 PRO-ACTIVE",
-        "product_url": "https://...",
-        "product_category": "Laborkühlschrank",  # Nur bei overview
-        "product_manufacturer": "Kirsch",         # Nur bei overview
-        "spec_category": "Abmessungen-cm",        # Nur bei specs
-        "specs": {"Außenmaße_Breite": 67, ...}   # Nur bei specs
-    }
-}
-```
+**Was erledigt wurde:**
+1. ✅ ChromaDB installiert und PersistentClient aufgesetzt
+2. ✅ Collection "prdukt_chunks" erstellt mit GBERT-Embeddings
+3. ✅ 1800 Chunks mit Metadata indexiert
+4. ✅ Datenbank-Kontrolle im Notebook implementiert
 
 **Output:**
 ```
 3-indexing/
-├── chroma_db/                       # ChromaDB Persistenz
-├── setup_index.ipynb                # Setup-Code
-└── test_queries.ipynb               # Erste Query-Tests
+├── chroma_db/
+│   └── chroma.sqlite3               # ChromaDB Persistenz
+└── 01-indexing.ipynb                # Indexing + Kontrolle
 ```
 
-### 📋 TODO: Phase 4 - Retrieval Evaluation
+**Key Learnings:**
+- IDs müssen als Strings gespeichert werden (ChromaDB-Requirement)
+- Index-basiertes Mapping bleibt konsistent mit Phase 2
+- ChromaDB lädt Embeddings direkt als Listen (`.tolist()`)
+- SQLite-basierte Persistenz ermöglicht einfaches Debugging
+
+---
+
+### 🎯 NEXT: Phase 4 - Retrieval Evaluation
 
 **Ziel:** Testen ob Chunking-Strategie und Embeddings funktionieren
 
@@ -345,8 +345,8 @@ Siehe `_docs/` Ordner für:
 
 ---
 
-*Last updated: 2025-10-03*
-*Status: Phase 1 (Chunking) ✅ Complete | Phase 2 (Embedding) 🎯 Next*
+*Last updated: 2025-10-05*
+*Status: Phase 1 (Chunking) ✅ | Phase 2 (Embedding) ✅ | Phase 3 (Indexing) ✅ | Phase 4 (Retrieval Eval) 🎯 Next*
 
 ---
 
@@ -355,11 +355,11 @@ Siehe `_docs/` Ordner für:
 ```
 Phase 1: Chunking ✅ DONE
    ↓
-Phase 2: Embedding 🎯 NEXT (multilingual-e5-large)
+Phase 2: Embedding ✅ DONE (gbert-large, 1800 chunks)
    ↓
-Phase 3: Indexing (ChromaDB)
+Phase 3: Indexing ✅ DONE (ChromaDB, 1800 chunks)
    ↓
-Phase 4: Retrieval Evaluation (testen!)
+Phase 4: Retrieval Evaluation 🎯 NEXT (testen!)
    ↓
 Phase 5: Model Evaluation (nur falls Phase 4 schlecht)
    ↓
@@ -372,3 +372,16 @@ Phase 6: Production RAG
 - Specs-Agent mit Dual-Input-Support (Array + Text)
 - Bereinigtes Dataset ohne leere Produkte
 - Output: 3x JSONL-Files (summs, descs, specs)
+
+### Phase 2 Summary (Completed)
+- GBERT-large Embeddings (1024-dim, normalisiert)
+- 1800 Chunks in 17:40 Min batch-processed
+- Validierung: Norm-Check + Re-Encode Similarity
+- Index-basiertes Mapping zwischen Embeddings & Metadata
+- Output: embeddings_gbert.npy + chunks_metadata.jsonl
+
+### Phase 3 Summary (Completed)
+- ChromaDB PersistentClient mit SQLite-Backend
+- Collection "prdukt_chunks" mit 1800 indexierten Chunks
+- Metadata inkl. chunk_type, product_id, etc.
+- Output: chroma_db/chroma.sqlite3
