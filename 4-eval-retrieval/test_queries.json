@@ -1,13 +1,13 @@
 {
   "metadata": {
-    "total_queries": 28,
-    "created_date": "2025-09-30",
+    "total_queries": 58,
+    "created_date": "2025-10-06",
+    "updated_date": "2025-10-06",
     "description": "Test queries for RAG retrieval evaluation - Medical refrigerators (Medikamentenkühlschränke)",
     "dataset_info": {
-      "total_chunks": 4619,
-      "specs_chunks": 4208,
-      "description_chunks": 411,
-      "product_types": ["Liebherr Medikamentenkühlschränke", "Kirsch Blutkonservenkühlschränke", "Ultratiefkühlschränke", "Laborgefrierschränke"]
+      "total_chunks": 1800,
+      "model": "deepset/gbert-large",
+      "product_types": ["Liebherr Medikamentenkühlschränke", "Kirsch Kühlschränke", "Haier Kühlschränke", "Laborgefrierschränke"]
     }
   },
   "queries": {
@@ -51,6 +51,58 @@
       {
         "id": "tech_010",
         "query": "Gibt es einen integrierten Datenlogger?"
+      },
+      {
+        "id": "tech_011",
+        "query": "Außenmaße des Geräts"
+      },
+      {
+        "id": "tech_012",
+        "query": "Wie groß ist der Kühlschrank?"
+      },
+      {
+        "id": "tech_013",
+        "query": "Abmessungen in Zentimetern"
+      },
+      {
+        "id": "tech_014",
+        "query": "BxTxH Maße"
+      },
+      {
+        "id": "tech_015",
+        "query": "Platzbedarf des Medikamentenkühlschranks"
+      },
+      {
+        "id": "tech_016",
+        "query": "Stromverbrauch pro Jahr"
+      },
+      {
+        "id": "tech_017",
+        "query": "Energieverbrauch in 365 Tagen"
+      },
+      {
+        "id": "tech_018",
+        "query": "Wie viel kWh verbraucht das Gerät?"
+      },
+      {
+        "id": "tech_019",
+        "query": "Rauminhalt des Kühlschranks"
+      },
+      {
+        "id": "tech_020",
+        "query": "Brutto Netto Liter"
+      },
+      {
+        "id": "tech_021",
+        "query": "Wie viel passt in den Kühlschrank?"
+      },
+      {
+        "id": "tech_022",
+        "query": "Volumen für Medikamente"
+      },
+      {
+        "id": "tech_023",
+        "query": "Anzahl Schubfächer verfügbar"
       }
     ],
     "semantic_features": [
@@ -89,6 +141,62 @@
       {
         "id": "sem_009",
         "query": "Was bedeutet DIN 13277 Zertifizierung?"
+      },
+      {
+        "id": "sem_010",
+        "query": "Temperaturalarm bei Störung"
+      },
+      {
+        "id": "sem_011",
+        "query": "Warnung bei Temperaturabweichung"
+      },
+      {
+        "id": "sem_012",
+        "query": "Optischer und akustischer Alarm"
+      },
+      {
+        "id": "sem_013",
+        "query": "SmartMonitoring Benachrichtigung"
+      },
+      {
+        "id": "sem_014",
+        "query": "E-Mail Warnung bei Temperaturproblem"
+      },
+      {
+        "id": "sem_015",
+        "query": "Netzausfallalarm verfügbar"
+      },
+      {
+        "id": "sem_016",
+        "query": "Batteriegepufferter Alarm"
+      },
+      {
+        "id": "sem_017",
+        "query": "SafetyDevice Schutzfunktion"
+      },
+      {
+        "id": "sem_018",
+        "query": "SmartLock automatische Verriegelung"
+      },
+      {
+        "id": "sem_019",
+        "query": "USB-Schnittstelle zum Datenauslesen"
+      },
+      {
+        "id": "sem_020",
+        "query": "WiFi LAN Verbindung"
+      },
+      {
+        "id": "sem_021",
+        "query": "Netzwerk-Anschluss verfügbar"
+      },
+      {
+        "id": "sem_022",
+        "query": "Datenlogger per USB auslesen"
+      },
+      {
+        "id": "sem_023",
+        "query": "SmartModule Vernetzbarkeit"
       }
     ],
     "comparison": [
@@ -145,6 +253,14 @@
       {
         "id": "hyb_007",
         "query": "Großer Medikamentenkühlschrank über 400 Liter mit USB-Datenlogger?"
+      },
+      {
+        "id": "hyb_008",
+        "query": "Betriebskosten Strom"
+      },
+      {
+        "id": "hyb_009",
+        "query": "Ultra-efficient Energieeffizienz"
       }
     ]
   }
