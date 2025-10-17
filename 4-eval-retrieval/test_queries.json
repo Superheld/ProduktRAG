@@ -2,265 +2,511 @@
   "metadata": {
     "total_queries": 58,
     "created_date": "2025-10-06",
-    "updated_date": "2025-10-06",
-    "description": "Test queries for RAG retrieval evaluation - Medical refrigerators (Medikamentenkühlschränke)",
+    "updated_date": "2025-10-12",
+    "description": "Test queries for RAG retrieval evaluation - Medical refrigerators (Medikamentenkühlschränke) with ground truth chunk_ids",
     "dataset_info": {
       "total_chunks": 1800,
       "model": "deepset/gbert-large",
-      "product_types": ["Liebherr Medikamentenkühlschränke", "Kirsch Kühlschränke", "Haier Kühlschränke", "Laborgefrierschränke"]
+      "product_types": [
+        "Liebherr Medikamentenkühlschränke",
+        "Kirsch Kühlschränke",
+        "Haier Kühlschränke",
+        "Laborgefrierschränke"
+      ]
     }
   },
   "queries": {
     "technical_specs": [
       {
         "id": "tech_001",
-        "query": "Wie hoch ist der Energieverbrauch des HMFvh 4001 pro Jahr?"
+        "query": "Wie hoch ist der Energieverbrauch des HMFvh 4001 pro Jahr?",
+        "chunk_ids": [
+          "HMFvh-4001-Perfection-50-C_spec_4"
+        ]
       },
       {
         "id": "tech_002",
-        "query": "Welche Schnittstellen haben die Medikamentenkühlschränke?"
+        "query": "Welche Schnittstellen hat der Fryka TUS 80/100?",
+        "chunk_ids": [
+          "FRYKA-Tiefkuehlunterbauschrank-TUS-80-100-logg-500C-bis-800C_spec_9"
+        ]
       },
       {
         "id": "tech_003",
-        "query": "Wie viele Schubfächer hat der HMFvh 4001 H63?"
+        "query": "Wie viele Schubfächer hat der HMFvh 4001 H63?",
+        "chunk_ids": [
+          "HMFvh-4001-H63-Perfection-50-C_spec_8"
+        ]
       },
       {
         "id": "tech_004",
-        "query": "Was sind die Außenmaße des HMFvh 5501?"
+        "query": "Was sind die Außenmaße des HMFvh 5501?",
+        "chunk_ids": [
+          "HMFvh-5501-Perfection-50-C_spec_0"
+        ]
       },
       {
         "id": "tech_005",
-        "query": "Welcher Temperaturbereich wird bei den Liebherr Geräten unterstützt?"
+        "query": "Welche Außentemperatur verträgt der SFFfg 5501?",
+        "chunk_ids": [
+          "SFFfg-5501-Performance-mit-Schubfaechern-90C-bis-300C_spec_3"
+        ]
       },
       {
         "id": "tech_006",
-        "query": "Wie laut ist der HMFvh 4001 im Betrieb?"
+        "query": "Wie laut ist der HMFvh 4001 im Betrieb?",
+        "chunk_ids": [
+          "HMFvh-4001-Perfection-50-C_spec_7"
+        ]
       },
       {
         "id": "tech_007",
-        "query": "Welches Kältemittel wird in den Perfection-Geräten verwendet?"
+        "query": "Welches Kältemittel wird im SRTvg 1511 verwendet?",
+        "chunk_ids": [
+          "SRTvg-1511-Performance-Laborkuehlgeraet-mit-Umluftkuehlung_spec_10"
+        ]
       },
       {
         "id": "tech_008",
-        "query": "Wie groß ist der Nettorauminhalt des HMFvh 4011 mit Glastür?"
+        "query": "Wie groß ist der Nettorauminhalt des HMFvh 4011 mit Glastür?",
+        "chunk_ids": [
+          "HMFvh-4011-Perfection-50-C-mit-Glastuer_spec_2"
+        ]
       },
       {
         "id": "tech_009",
-        "query": "Welche Belastbarkeit haben die Ablageflächen?"
+        "query": "Wie Schwer ist der Kirsch LABO-125 ESSENTIAL?",
+        "chunk_ids": ["Kirsch-LABO-125-ESSENTIAL-Laborkuehlschrank_spec_1"]
       },
       {
         "id": "tech_010",
-        "query": "Gibt es einen integrierten Datenlogger?"
+        "query": "Hat der FRYKA TUS 50-100 einen integrierten Datenlogger?",
+        "chunk_ids": [
+          "FRYKA-Tiefkuehlunterbauschrank-TUS-50-100-logg-100-bis-500-C_spec_9"
+        ]
       },
       {
         "id": "tech_011",
-        "query": "Außenmaße des Geräts"
+        "query": "Außenmaße des Haier HYC-85GD",
+        "chunk_ids": [
+          "Haier-Medikamentenkuehlschrank-HYC-85GD_spec_0"
+        ]
       },
       {
         "id": "tech_012",
-        "query": "Wie groß ist der Kühlschrank?"
+        "query": "Wie groß ist der Kirsch BL-720 ULTIMATE?",
+        "chunk_ids": [
+          "Kirsch-BL-720-ULTIMATE-Blutkonservenkuehlschrank_spec_0"
+        ]
       },
       {
         "id": "tech_013",
-        "query": "Abmessungen in Zentimetern"
+        "query": "Abmessungen des HMTvh 1511 in Zentimetern",
+        "chunk_ids": [
+          "HMTvh-1511-Perfection-Medikamentenkuehlgeraet-mit-Ordnungssystem_spec_0"
+        ]
       },
       {
         "id": "tech_014",
-        "query": "BxTxH Maße"
+        "query": "BxTxH Maße des SRPvh 8411",
+        "chunk_ids": [
+          "SRPvh-8411-Perfection-Laborkuehlgeraet-mit-Glastuer_spec_0"
+        ]
       },
       {
         "id": "tech_015",
-        "query": "Platzbedarf des Medikamentenkühlschranks"
+        "query": "Platzbedarf des LKv 3910",
+        "chunk_ids": ["LKv-3910-MediLine-30-bis-160C_spec_0"]
       },
       {
         "id": "tech_016",
-        "query": "Stromverbrauch pro Jahr"
+        "query": "Stromverbrauch des SFPvh 1402 pro Jahr",
+        "chunk_ids": ["SFPvh-1402-Perfection-Laborgefriergeraet-mit-Umluftkuehlung_desc_4"]
       },
       {
         "id": "tech_017",
-        "query": "Energieverbrauch in 365 Tagen"
+        "query": "Energieverbrauch des SUFsg 3501 in 365 Tagen",
+        "chunk_ids": ["SUFsg-3501-MediLine-400C-bis-860C_spec_4"]
       },
       {
         "id": "tech_018",
-        "query": "Wie viel kWh verbraucht das Gerät?"
+        "query": "Wie viel kWh verbraucht der Kirsch LABEX-288 PRO-ACTIVE?",
+        "chunk_ids": ["Kirsch-LABEX-288-ULTIMATE-Laborkuehlschrank_spec_4"]
       },
       {
         "id": "tech_019",
-        "query": "Rauminhalt des Kühlschranks"
+        "query": "Rauminhalt des LABO-720 CHROMAT ULTIMATE",
+        "chunk_ids": ["Kirsch-LABO-720-CHROMAT-ULTIMATE-Laborkuehlschrank_summ_0"]
       },
       {
         "id": "tech_020",
-        "query": "Brutto Netto Liter"
+        "query": "Brutto und Netto Liter beim FRYKA TUS 80-100",
+        "chunk_ids": ["FRYKA-Tiefkuehlunterbauschrank-TUS-80-100-500C-bis-850C_spec_8"]
       },
       {
         "id": "tech_021",
-        "query": "Wie viel passt in den Kühlschrank?"
+        "query": "Wie viel passt in den Kirsch LABEX-105 PRO-ACTIVE?",
+        "chunk_ids": ["Kirsch-LABEX-105-PRO-ACTIVE-Laborkuehlschrank_spec_2"]
       },
       {
         "id": "tech_022",
-        "query": "Volumen für Medikamente"
+        "query": "Volumen für Medikamente beim SRPvg 8401",
+        "chunk_ids": [
+          "SRPvg-8401-Performance-Laborkuehlgeraet-mit-Umluftkuehlung_desc_0"
+        ]
       },
       {
         "id": "tech_023",
-        "query": "Anzahl Schubfächer verfügbar"
+        "query": "Anzahl Schubfächer beim HYC 85GD",
+        "chunk_ids": ["Haier-Medikamentenkuehlschrank-HYC-85GD_spec_8"]
       }
     ],
     "semantic_features": [
       {
         "id": "sem_001",
-        "query": "Welche Kühlschränke sind für die Lagerung von Impfstoffen geeignet?"
+        "query": "Welche Kühlschränke sind für die Lagerung von Impfstoffen geeignet?",
+        "chunk_ids": [
+          "HMFvh-4001-Perfection-50-C_desc_0",
+          "HMFvh-4001-H63-Perfection-50-C_desc_1",
+          "HMFvh-5511-Perfection-50-C-mit-Glastuer_desc_0"
+        ]
       },
       {
         "id": "sem_002",
-        "query": "Was passiert bei einem Stromausfall?"
+        "query": "Was passiert bei einem Stromausfall?",
+        "chunk_ids": [
+          "Haier-Medikamentenkuehlschrank-HYC-85GD_spec_10",
+          "HMFvh-5511-H63-Perfection-50-C-mit-Glastuer_desc_4",
+          "Liebherr-SUFsg-5001-H72-MediLine-Ultratiefkuehlschrank-mit-Wasserkuehlung_desc_3"
+        ]
       },
       {
         "id": "sem_003",
-        "query": "Wie funktioniert die Alarmierung bei Temperaturabweichungen?"
+        "query": "Wie funktioniert die Alarmierung bei Temperaturabweichungen?",
+        "chunk_ids": [
+          "Kirsch-LABO-288-PRO-ACTIVE-Laborkuehlschrank_desc_3",
+          "Kirsch-LABO-340-ULTIMATE-Laborkuehlschrank_desc_4",
+          "Liebherr-SUFsg-5001-H72-MediLine-Ultratiefkuehlschrank-mit-Wasserkuehlung_desc_3"
+        ]
       },
       {
         "id": "sem_004",
-        "query": "Welche Sicherheitsfeatures schützen temperaturempfindliche Medikamente?"
+        "query": "Welche Sicherheitsfeatures schützen temperaturempfindliche Medikamente?",
+        "chunk_ids": [
+          "SFFvh-4001-Perfection-90C-bis-350C_summ_0",
+          "SFFsg-5501-Performance-90-C-bis-300-C_desc_0",
+          "SFFsg-5501-Performance-90-C-bis-300-C_desc_2"
+        ]
       },
       {
         "id": "sem_005",
-        "query": "Wie wird die Temperatur überwacht und dokumentiert?"
+        "query": "Wie wird die Temperatur überwacht und dokumentiert?",
+        "chunk_ids": [
+          "SFFvh-4001-Perfection-90C-bis-350C_desc_5",
+          "SFFvh-4001-Perfection-90C-bis-350C_summ_0",
+          "HMFvh-4011-H63-Perfection-50-C-mit-Glastuer-und-Ordnungssystem_desc_2"
+        ]
       },
       {
         "id": "sem_006",
-        "query": "Was ist SmartMonitoring und wie funktioniert es?"
+        "query": "Was ist SmartMonitoring und wie funktioniert es?",
+        "chunk_ids": [
+          "HMFvh-5511-H63-Perfection-50-C-mit-Glastuer_desc_2",
+          "Liebherr-SUFsg-5001-H72-MediLine-Ultratiefkuehlschrank-mit-Wasserkuehlung_desc_3",
+          "Liebherr-SUFsg-5001-H72-MediLine-Ultratiefkuehlschrank-mit-Wasserkuehlung_desc_6"
+        ]
       },
       {
         "id": "sem_007",
-        "query": "Welche Alarmsysteme sind vorhanden?"
+        "query": "Welche Alarmsysteme sind vorhanden?",
+        "chunk_ids": [
+          "Haier-Medikamentenkuehlschrank-HYC-85GD_summ_0",
+          "Kirsch-LABEX-720-ULTIMATE-Laborkuehlschrank_spec_9",
+          "HMFvh-5511-H63-Perfection-50-C-mit-Glastuer_desc_1"
+        ]
       },
       {
         "id": "sem_008",
-        "query": "Wie wird verhindert, dass Medikamente nach einer Störung in Umlauf geraten?"
+        "query": "Wie wird verhindert, dass Medikamente nach einer Störung in Umlauf geraten?",
+        "chunk_ids": [
+          "SFFsg-5501-Performance-90-C-bis-300-C_desc_2",
+          "SFFsg-5501-Performance-mit-Schubfaechern-90C-bis-300C_desc_2",
+          "HMFvh-5511-Perfection-50-C-mit-Glastuer_desc_1"
+        ]
       },
       {
         "id": "sem_009",
-        "query": "Was bedeutet DIN 13277 Zertifizierung?"
+        "query": "Was bedeutet DIN 13277 Zertifizierung?",
+        "chunk_ids": [
+          "HMTvh-1501-Perfection-Medikamentenkuehlgeraet-mit-Ordnungssystem_spec_9",
+          "Liebherr-SUFsg-5001-H72-MediLine-Ultratiefkuehlschrank-mit-Wasserkuehlung_spec_9",
+          "HMTvh-1511-Perfection-Medikamentenkuehlgeraet-mit-Ordnungssystem_spec_9"
+        ]
       },
       {
         "id": "sem_010",
-        "query": "Temperaturalarm bei Störung"
+        "query": "Temperaturalarm bei Störung",
+        "chunk_ids": [
+          "Liebherr-SUFsg-5001-H72-MediLine-Ultratiefkuehlschrank-mit-Wasserkuehlung_desc_5",
+          "SRPvg-8401-Performance-Laborkuehlgeraet-mit-Umluftkuehlung_desc_2",
+          "SRPvg-1412-Performance-Laborkuehlgeraet-mit-Umluftkuehlung_desc_3"
+        ]
       },
       {
         "id": "sem_011",
-        "query": "Warnung bei Temperaturabweichung"
+        "query": "Warnung bei Temperaturabweichung",
+        "chunk_ids": [
+          "Kirsch-LABO-288-PRO-ACTIVE-Laborkuehlschrank_desc_3",
+          "Kirsch-LABO-340-ULTIMATE-Laborkuehlschrank_desc_4",
+          "Liebherr-SUFsg-5001-H72-MediLine-Ultratiefkuehlschrank-mit-Wasserkuehlung_desc_3"
+        ]
       },
       {
         "id": "sem_012",
-        "query": "Optischer und akustischer Alarm"
+        "query": "Optischer und akustischer Alarm",
+        "chunk_ids": [
+          "HMFvh-5511-H63-Perfection-50-C-mit-Glastuer_spec_9",
+          "FRYKA-Tiefkuehlunterbauschrank-TUS-80-100-logg-500C-bis-800C_spec_9",
+          "SFFsg-5501-Performance-90-C-bis-300-C_spec_9"
+        ]
       },
       {
         "id": "sem_013",
-        "query": "SmartMonitoring Benachrichtigung"
+        "query": "SmartMonitoring Benachrichtigung",
+        "chunk_ids": [
+          "SRPvg-8401-Performance-Laborkuehlgeraet-mit-Umluftkuehlung_desc_2",
+          "SRPvg-1412-Performance-Laborkuehlgeraet-mit-Umluftkuehlung_desc_3",
+          "SFPvh-1402-Perfection-Laborgefriergeraet-mit-Umluftkuehlung_desc_2"
+        ]
       },
       {
         "id": "sem_014",
-        "query": "E-Mail Warnung bei Temperaturproblem"
+        "query": "E-Mail Warnung bei Temperaturproblem",
+        "chunk_ids": [
+          "SFFvh-4001-Perfection-90C-bis-350C_desc_5",
+          "FRYKA-Tiefkuehlunterbauschrank-TUS-80-100-logg-500C-bis-800C_spec_10",
+          "FRYKA-Tiefkuehlschrank-TS-50-100-logg-100C-bis-500C_spec_10"
+        ]
       },
       {
         "id": "sem_015",
-        "query": "Netzausfallalarm verfügbar"
+        "query": "Netzausfallalarm verfügbar",
+        "chunk_ids": [
+          "SFFsg-5501-Performance-90-C-bis-300-C_spec_10",
+          "SFTfg-1501-Performance-Laborgefriergeraet-mit-zuendquellenfreiem-Innenraum_spec_10",
+          "Liebherr-SUFsg-5001-H72-MediLine-Ultratiefkuehlschrank-mit-Wasserkuehlung_spec_10"
+        ]
       },
       {
         "id": "sem_016",
-        "query": "Batteriegepufferter Alarm"
+        "query": "Batteriegepufferter Alarm",
+        "chunk_ids": [
+          "HMFvh-5511-H63-Perfection-50-C-mit-Glastuer_desc_4",
+          "HMFvh-4011-H63-Perfection-50-C-mit-Glastuer-und-Ordnungssystem_desc_4",
+          "HMFvh-4001-Perfection-50-C_desc_4"
+        ]
       },
       {
         "id": "sem_017",
-        "query": "SafetyDevice Schutzfunktion"
+        "query": "SafetyDevice Schutzfunktion",
+        "chunk_ids": [
+          "SFFsg-5501-Performance-90-C-bis-300-C_desc_2",
+          "SFFsg-5501-Performance-mit-Schubfaechern-90C-bis-300C_desc_2",
+          "SFFsg-4001-Performance-90-C-bis-300-C_desc_2"
+        ]
       },
       {
         "id": "sem_018",
-        "query": "SmartLock automatische Verriegelung"
+        "query": "SmartLock automatische Verriegelung",
+        "chunk_ids": [
+          "HMFvh-5511-H63-Perfection-50-C-mit-Glastuer_desc_3",
+          "HMFvh-4011-H63-Perfection-50-C-mit-Glastuer-und-Ordnungssystem_desc_3",
+          "HMFvh-4001-Perfection-50-C_desc_3"
+        ]
       },
       {
         "id": "sem_019",
-        "query": "USB-Schnittstelle zum Datenauslesen"
+        "query": "USB-Schnittstelle zum Datenauslesen",
+        "chunk_ids": [
+          "HMFvh-5511-H63-Perfection-50-C-mit-Glastuer_desc_2",
+          "HMFvh-5511-H63-Perfection-50-C-mit-Glastuer_desc_5",
+          "HMFvh-4011-H63-Perfection-50-C-mit-Glastuer-und-Ordnungssystem_desc_5"
+        ]
       },
       {
         "id": "sem_020",
-        "query": "WiFi LAN Verbindung"
+        "query": "WiFi LAN Verbindung",
+        "chunk_ids": [
+          "HMFvh-5511-H63-Perfection-50-C-mit-Glastuer_spec_9",
+          "SFFsg-5501-Performance-90-C-bis-300-C_spec_9",
+          "HMTvh-1501-Perfection-Medikamentenkuehlgeraet-mit-Ordnungssystem_spec_9"
+        ]
       },
       {
         "id": "sem_021",
-        "query": "Netzwerk-Anschluss verfügbar"
+        "query": "Netzwerk-Anschluss verfügbar",
+        "chunk_ids": [
+          "FRYKA-Tiefkuehlunterbauschrank-TUS-50-100-logg-100-bis-500-C_desc_3",
+          "SUFsg-3501-MediLine-400C-bis-860C_desc_4",
+          "FRYKA-Tiefkuehlschrank-TS-80-100-logg-500C-bis-800C_desc_3"
+        ]
       },
       {
         "id": "sem_022",
-        "query": "Datenlogger per USB auslesen"
+        "query": "Datenlogger per USB auslesen",
+        "chunk_ids": [
+          "HMFvh-5511-H63-Perfection-50-C-mit-Glastuer_desc_5",
+          "FRYKA-Tiefkuehlschrank-TS-50-100-logg-100C-bis-500C_desc_3",
+          "FRYKA-Tiefkuehlunterbauschrank-TUS-50-100-logg-100-bis-500-C_desc_4"
+        ]
       },
       {
         "id": "sem_023",
-        "query": "SmartModule Vernetzbarkeit"
+        "query": "SmartModule Vernetzbarkeit",
+        "chunk_ids": [
+          "HMFvh-5511-H63-Perfection-50-C-mit-Glastuer_spec_10",
+          "HMFvh-4011-H63-Perfection-50-C-mit-Glastuer-und-Ordnungssystem_spec_10",
+          "SFTsg-1501-Performance-Laborgefriergeraet-mit-statischer-Kuehlung_spec_10"
+        ]
       }
     ],
     "comparison": [
       {
         "id": "comp_001",
-        "query": "Was ist der Unterschied zwischen HMFvh 4001 und HMFvh 4011?"
+        "query": "Was ist der Unterschied zwischen HMFvh 4001 und HMFvh 4011?",
+        "chunk_ids": [
+          "HMFvh-4011-H63-Perfection-50-C-mit-Glastuer-und-Ordnungssystem_desc_0",
+          "HMFvh-4001-H63-Perfection-50-C_desc_0",
+          "HMFvh-4011-Perfection-50-C-mit-Glastuer_desc_0"
+        ]
       },
       {
         "id": "comp_002",
-        "query": "Welche Modelle haben eine Glastür?"
+        "query": "Welche Modelle haben eine Glastür?",
+        "chunk_ids": [
+          "Kirsch-LABO-288-PRO-ACTIVE-Laborkuehlschrank_spec_9",
+          "Kirsch-LABO-340-ULTIMATE-Laborkuehlschrank_spec_9",
+          "Kirsch-BL-720-ULTIMATE-Blutkonservenkuehlschrank_spec_9"
+        ]
       },
       {
         "id": "comp_003",
-        "query": "Vergleich zwischen H63 und Standard Perfection Modellen"
+        "query": "Vergleich zwischen H63 und Standard Perfection Modellen",
+        "chunk_ids": [
+          "HMFvh-4001-Perfection-50-C_desc_4",
+          "HMFvh-5501-Perfection-50-C_desc_3",
+          "HMFvh-5511-H63-Perfection-50-C-mit-Glastuer_summ_0"
+        ]
       },
       {
         "id": "comp_004",
-        "query": "Unterschied zwischen Volltür und Glastür-Modellen beim Energieverbrauch"
+        "query": "Unterschied zwischen Volltür und Glastür-Modellen beim Energieverbrauch",
+        "chunk_ids": [
+          "SRPvh-6511-Perfection-Laborkuehlgeraet-mit-Glastuer_summ_0",
+          "SRPvh-8411-Perfection-Laborkuehlgeraet-mit-Glastuer_summ_0",
+          "Kirsch-MED-288-PRO-ACTIVE-Medikamentenkuehlschrank_summ_0"
+        ]
       },
       {
         "id": "comp_005",
-        "query": "Welche Geräte haben ein Ordnungssystem mit Schubfächern?"
+        "query": "Welche Geräte haben ein Ordnungssystem mit Schubfächern?",
+        "chunk_ids": [
+          "HMTvh-1501-Perfection-Medikamentenkuehlgeraet-mit-Ordnungssystem_desc_0",
+          "HMTvh-1511-Perfection-Medikamentenkuehlgeraet-mit-Ordnungssystem_summ_0",
+          "Kirsch-LABO-288-PRO-ACTIVE-Laborkuehlschrank_spec_8"
+        ]
       },
       {
         "id": "comp_006",
-        "query": "Liebherr vs Kirsch Kühlschränke - welche Unterschiede gibt es?"
+        "query": "Liebherr vs Kirsch Kühlschränke - welche Unterschiede gibt es?",
+        "chunk_ids": [
+          "Kirsch-LABO-288-PRO-ACTIVE-Laborkuehlschrank_desc_0",
+          "Kirsch-FROSTER-LABEX-530-ULTIMATE-Laborgefrierschrank_desc_0",
+          "Kirsch-FROSTER-LABEX-530-ULTIMATE-Laborgefrierschrank_desc_3"
+        ]
       }
     ],
     "hybrid": [
       {
         "id": "hyb_001",
-        "query": "Energieeffizienter Kühlschrank mit SmartMonitoring für Arztpraxis?"
+        "query": "Energieeffizienter Kühlschrank mit SmartMonitoring für Arztpraxis?",
+        "chunk_ids": [
+          "HMTvh-1501-Perfection-Medikamentenkuehlgeraet-mit-Ordnungssystem_summ_0",
+          "HMTvh-1501-Perfection-Medikamentenkuehlgeraet-mit-Umluftkuehlung_summ_0",
+          "HMFvh-5511-H63-Perfection-50-C-mit-Glastuer_desc_5"
+        ]
       },
       {
         "id": "hyb_002",
-        "query": "DIN-zertifiziertes Gerät mit WiFi und weniger als 200 kWh Jahresverbrauch?"
+        "query": "DIN-zertifiziertes Gerät mit WiFi und weniger als 200 kWh Jahresverbrauch?",
+        "chunk_ids": [
+          "HMTvh-1501-Perfection-Medikamentenkuehlgeraet-mit-Ordnungssystem_summ_0",
+          "SRPvg-8401-Performance-Laborkuehlgeraet-mit-Umluftkuehlung_summ_0",
+          "SRPvh-6511-Perfection-Laborkuehlgeraet-mit-Glastuer_summ_0"
+        ]
       },
       {
         "id": "hyb_003",
-        "query": "Kühlschrank mit Glastür und Netzwerkanbindung für Impfstofflagerung?"
+        "query": "Kühlschrank mit Glastür und Netzwerkanbindung für Impfstofflagerung?",
+        "chunk_ids": [
+          "HMFvh-5511-H63-Perfection-50-C-mit-Glastuer_summ_0",
+          "HMFvh-4011-H63-Perfection-50-C-mit-Glastuer-und-Ordnungssystem_summ_0",
+          "HMFvh-5511-Perfection-50-C-mit-Glastuer_summ_0"
+        ]
       },
       {
         "id": "hyb_004",
-        "query": "Kompaktes Gerät unter 60 cm Breite mit Alarmfunktion bei Stromausfall?"
+        "query": "Kompaktes Gerät unter 60 cm Breite mit Alarmfunktion bei Stromausfall?",
+        "chunk_ids": [
+          "SFTfg-1501-Performance-Laborgefriergeraet-mit-zuendquellenfreiem-Innenraum_desc_5",
+          "Kirsch-FROSTER-BL-730-PRO-ACTIVE-Blutplasmafroster_desc_6",
+          "SFTfg-1501-740-Performance-Laborgefriergeraet-mit-zuendquellenfreiem-Innenraum_desc_5"
+        ]
       },
       {
         "id": "hyb_005",
-        "query": "Welches Modell hat die beste Temperaturstabilität und niedrigsten Energieverbrauch?"
+        "query": "Welches Modell hat die beste Temperaturstabilität und niedrigsten Energieverbrauch?",
+        "chunk_ids": [
+          "SFTsg-1501-Performance-Laborgefriergeraet-mit-statischer-Kuehlung_summ_0",
+          "SFFsg-5501-Performance-mit-Schubfaechern-90C-bis-300C_summ_0",
+          "SFFsg-4001-Performance-mit-Schubfaechern-90C-bis-300C_summ_0"
+        ]
       },
       {
         "id": "hyb_006",
-        "query": "Kühlschrank mit antimikrobiellem Griff und automatischer Türverriegelung bei Alarm?"
+        "query": "Kühlschrank mit antimikrobiellem Griff und automatischer Türverriegelung bei Alarm?",
+        "chunk_ids": [
+          "HMFvh-5511-H63-Perfection-50-C-mit-Glastuer_spec_10",
+          "SFFsg-5501-Performance-90-C-bis-300-C_spec_10",
+          "HMTvh-1501-Perfection-Medikamentenkuehlgeraet-mit-Ordnungssystem_spec_10"
+        ]
       },
       {
         "id": "hyb_007",
-        "query": "Großer Medikamentenkühlschrank über 400 Liter mit USB-Datenlogger?"
+        "query": "Großer Medikamentenkühlschrank über 400 Liter mit USB-Datenlogger?",
+        "chunk_ids": [
+          "HMFvh-4001-Perfection-50-C_summ_0",
+          "HMFvh-4001-H63-Perfection-50-C_summ_0",
+          "Kirsch-BL-720-ULTIMATE-Blutkonservenkuehlschrank_desc_5"
+        ]
       },
       {
         "id": "hyb_008",
-        "query": "Betriebskosten Strom"
+        "query": "Betriebskosten Strom",
+        "chunk_ids": [
+          "Kirsch-MED-468-PRO-ACTIVE-Medikamentenkuehlschrank_summ_0",
+          "Kirsch-MED-288-PRO-ACTIVE-Medikamentenkuehlschrank_summ_0",
+          "Kirsch-MED-720-PRO-ACTIVE-Medikamentenkuehlschrank_summ_0"
+        ]
       },
       {
         "id": "hyb_009",
-        "query": "Ultra-efficient Energieeffizienz"
+        "query": "Ultra-efficient Energieeffizienz",
+        "chunk_ids": [
+          "HMTvh-1501-Perfection-Medikamentenkuehlgeraet-mit-Ordnungssystem_desc_4",
+          "Kirsch-BL-176-PRO-ACTIVE-Blutkonservenkuehlschrank_desc_6",
+          "HMTvh-1511-Perfection-Medikamentenkuehlgeraet-mit-Ordnungssystem_desc_4"
+        ]
       }
     ]
   }
