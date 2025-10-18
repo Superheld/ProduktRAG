@@ -1,16 +1,55 @@
 # ProduktRAG - Ein RAG-Lernprojekt
 
-Ein hands-on Projekt zum Verstehen von Retrieval-Augmented Generation (RAG) und zur Vertiefung von Python-Kenntnissen.
+Ein iteratives, lebendes Projekt zum Verstehen von Retrieval-Augmented Generation (RAG). Dies ist ein **Entwicklungstagebuch**, das den kompletten Lernprozess dokumentiert - inklusive Rückschritten, Iterationen und Verbesserungen basierend auf Evaluationsdaten.
 
-## Motivation
+## 🎯 Philosophie
 
-Dieses Projekt ist ein **Lernprojekt** auf dem Weg zum Verständnis neuronaler Netze. RAG dient als praktischer Einstieg, um Konzepte wie Embeddings, Vector Search und semantische Ähnlichkeit zu verstehen.
+- **Iterativ, nicht linear**: Bereits "fertige" Phasen werden basierend auf Evaluationsergebnissen überarbeitet
+- **Roadmap-basiert**: Planung in [ROADMAP.md](ROADMAP.md)
+- **Diskutieren → Coden → Debuggen**: Ich schreibe, Claude Code unterstützt
+- **Prozess > Ergebnis**: Der Lernweg ist wichtiger als perfekter Code
 
-## Arbeitsweise
+---
 
-- **Roadmap-basiert**: Alle Schritte werden in [ROADMAP.md](ROADMAP.md) geplant und dokumentiert
-- **Diskutieren → Coden → Debuggen**: Ich schreibe den Code selbst, Claude Code unterstützt beim Debuggen
-- **Prozess steht im Vordergrund**: Ausführliche Dokumentation des Lernprozesses
+## 📔 Entwicklungstagebuch
+
+### 2025-10-18: Datenqualität verbessert, Retrieval-Evaluation erweitert
+
+**Erkenntnisse aus Phase 4:**
+- Spezifikationen brauchen mehr Kontext für bessere Embeddings
+- Retrieval-Metriken zeigen: Distanz allein reicht nicht
+
+**Änderungen:**
+- ↻ **Phase 1 überarbeitet**: Produktnamen werden jetzt in Spec-Header eingebunden (`format_spec()`)
+- ↻ **Phase 1-3 neu generiert**: Chunks, Embeddings und Index mit verbesserter Datenqualität
+- → **Phase 4 erweitert**: Retrieval-Ergebnisse werden als JSON persistiert, neue Metriken vorbereitet (Cosine Similarity, Dot Product)
+
+**Nächste Schritte:**
+- Erweiterte Metrik-Analyse implementieren
+- Chunk-Type Distribution analysieren
+- Query-Schwierigkeit bewerten
+
+---
+
+### 2025-10-XX: Phase 4 gestartet - Query Retrieval Evaluation
+
+**Was funktioniert:**
+- ChromaDB Indexierung liefert erste Ergebnisse
+- 61 Test-Queries aus verschiedenen Kategorien
+
+**Erste Probleme erkannt:**
+- Spec-Chunks ohne Produktkontext schwer interpretierbar
+- Distance-Metrik allein gibt kein vollständiges Bild
+
+→ Führte zur ersten Iteration (siehe oben)
+
+---
+
+### 2025-10-XX: Phasen 1-3 abgeschlossen
+
+- ✅ Phase 1: LLM-basierte Normalisierung mit Mistral
+- ✅ Phase 2: GBERT-Embeddings für 1800 Chunks
+- ✅ Phase 3: ChromaDB Indexierung
 
 ## Technischer Stack
 
@@ -34,14 +73,22 @@ ProduktRAG/
 └── requirements.txt        # Python Dependencies
 ```
 
-## Aktueller Status
+---
 
-✅ **Phase 1**: Chunking-Strategie mit hierarchischen Chunks (Overview, Description, Specs)
-✅ **Phase 2**: 1800 GBERT-Embeddings generiert und validiert
-✅ **Phase 3**: ChromaDB Indexierung abgeschlossen
-🎯 **Phase 4**: Retrieval Evaluation (Next)
+## 📊 Aktueller Stand
 
-Details siehe [ROADMAP.md](ROADMAP.md)
+| Phase | Status | Iterationen |
+|-------|--------|-------------|
+| 1. Normalisierung + Chunking | ↻ **Rev. 2** | Produktnamen in Specs |
+| 2. Embeddings | ↻ **Rev. 2** | Neu generiert nach Chunk-Update |
+| 3. Indexing | ↻ **Rev. 2** | Neu indexiert |
+| 4. Retrieval Evaluation | 🎯 **In Arbeit** | Metriken erweitert |
+| 5. Model Evaluation | ⏸️ Geplant | - |
+| 6. Production Pipeline | ⏸️ Geplant | - |
+
+**Legende:** ✅ Abgeschlossen | ↻ Überarbeitet | 🎯 Aktiv | ⏸️ Ausstehend
+
+Details zur Planung: [ROADMAP.md](ROADMAP.md)
 
 ## Setup
 
@@ -53,18 +100,19 @@ pip install -r requirements.txt
 jupyter notebook 1-normalisation/1-cleanup.ipynb
 ```
 
-## Lernziele
+## 🎓 Lernziele
 
-- **RAG-Pipeline verstehen**: Von Rohdaten bis zur semantischen Suche
-- **Embedding-Konzepte**: Wie funktionieren Vektorrepräsentationen?
-- **Chunking-Strategien**: Wie strukturiert man Daten für optimale Retrieval-Qualität?
-- **Python-Praxis**: Pandas, NumPy, ML-Libraries
-- **Evaluierung**: Wie misst man Qualität von Retrieval-Systemen?
+- **Iterative Entwicklung**: Wie verbessert man ein System basierend auf Metriken?
+- **RAG-Pipeline**: Von Rohdaten über Embeddings bis zur semantischen Suche
+- **Chunking-Strategien**: Optimierung für Retrieval-Qualität (inkl. Kontextualisierung)
+- **Embedding-Konzepte**: Vektorrepräsentationen und Similarity-Metriken
+- **Evaluation**: Wie misst und verbessert man Retrieval-Systeme?
+- **Python-Praxis**: Pandas, NumPy, ML-Libraries, Jupyter Notebooks
 
-## Dokumentation
+## 📚 Dokumentation
 
 Ausführliche Konzept-Dokumentation befindet sich im separaten Dokumentations-Repository.
 
 ---
 
-**Hinweis**: Dies ist ein persönliches Lernprojekt. Der Code ist bewusst mit vielen Kommentaren und Erklärungen versehen, um den Lernprozess nachvollziehbar zu machen.
+**Hinweis**: Dies ist ein persönliches Lernprojekt und ein **lebendes Dokument**. Änderungen an früheren Phasen sind Teil des Lernprozesses und werden hier dokumentiert.

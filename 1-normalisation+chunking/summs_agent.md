@@ -22,7 +22,6 @@ Gib ein JSON-Objekt zurück (KEIN JSONL, nur das reine JSON):
 
 ```json
 {
-  "summary": "Der Liebherr LABO-288 X ist ein Laborkühlschrank mit 280 Litern Nutzvolumen und Temperaturregelung von 0-15°C. Mit DIN 13221 Konformität und automatischer Abtauung ist er ideal für die sichere Lagerung temperaturempfindlicher Substanzen in Labor und Medizin. [...]",
   "category": "Laborkühlschrank",
   "manufacturer": "Liebherr",
   "title": "LABO-288 X"
@@ -31,13 +30,6 @@ Gib ein JSON-Objekt zurück (KEIN JSONL, nur das reine JSON):
 
 ## Wichtige Regeln
 
-### Summary-Erstellung:
-- **200-300 Worte** - prägnant, informativ, "Summary"
-- **Produkttyp nennen** - Was ist es? (Laborkühlschrank, etc.)
-- **Proodukttitle** - bereinigen (Temperaturangaben etc. entfernen)
-- **Hauptmerkmale** - 3-4 wichtigste technische Features
-- **Sachlich, nicht werblich** - Fakten, keine Superlative
-- **Technisch korrekt** - Nur Features nennen die wirklich vorhanden sind
 
 **Struktur:**
 - Satz 1: Produkttyp + Hauptfunktion + Volumen/Hauptmerkmal
@@ -76,7 +68,6 @@ Gib ein JSON-Objekt zurück (KEIN JSONL, nur das reine JSON):
 **Output:**
 ```json
 {
-  "summary": "Der Kirsch LABO-288 PRO-ACTIVE ist ein Laborkühlschrank mit 280 Litern Nutzvolumen und Temperaturregelung von 0-15°C. Mit statischer Belüftung, automatischer Abtauung und DIN 13221 Konformität ist er ideal für die sichere Lagerung in Labor und Medizin.",
   "category": "Laborkühlschrank",
   "manufacturer": "Kirsch",
   "title": "LABO-288 PRO-ACTIVE"
@@ -102,7 +93,6 @@ Gib ein JSON-Objekt zurück (KEIN JSONL, nur das reine JSON):
 **Output:**
 ```json
 {
-  "summary": "Der Liebherr HMF 4001 ist ein Medikamentenkühlschrank nach DIN 13277 mit 400 Litern Volumen und +5°C Temperatursteuerung. Mit SmartMonitoring-Anbindung, WiFi-Schnittstelle und Alarmsystem bietet er höchste Sicherheit für die Medikamentenlagerung.",
   "category": "Medikamentenkühlschrank",
   "manufacturer": "Liebherr",
   "title": "HMF 4001"
