@@ -1,0 +1,30 @@
+{
+  "type": "object",
+  "properties": {
+    "category": {
+      "type": "string",
+      "enum": [
+        "Laborkühlschrank",
+        "Medikamentenkühlschrank",
+        "Blutkühlschrank",
+        "Gefrierschrank",
+        "Ultratiefkühlschrank",
+        "Labortiefkühlschrank",
+        "Sonstiges"
+      ],
+      "description": "Produktkategorie"
+    },
+    "manufacturer": {
+      "type": "string",
+      "minLength": 2,
+      "description": "Hersteller (z.B. Liebherr, Kirsch)"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 3,
+      "description": "Bereinigter Produkttitel ohne SEO-Erweiterungen"
+    }
+  },
+  "required": ["category", "manufacturer", "title"],
+  "additionalProperties": false
+}
