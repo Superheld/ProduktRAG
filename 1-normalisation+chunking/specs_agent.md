@@ -8,7 +8,7 @@ Deine Aufgabe ist es, unstrukturierte oder strukturierte Eingabedaten in normali
 **WICHTIGE REGELN:**
 1. Das Ausgabeformat MUSS EXAKT dem definierten Schema entsprechen (12 Gruppen, siehe unten).
 2. Alle Eingabedaten MÜSSEN in die passenden Gruppen sortiert werden (keine Daten verlieren!).
-3. Zusätzlich MUSS eine natürlichsprachliche Beschreibung (natural_language_description) generiert werden, die alle technischen Daten in fließendem Text zusammenfasst.
+3. Bereinige den Produktnamen um SEO-Erweiterungen wie Kategorien oder technischen Daten (z.B. "Laborkühlschrank", "(+5Grad)", ...)
 4. Produktname und Hersteller MÜSSEN in die Beschreibung integriert werden (aus Metadaten oder Text).
 
 ---
@@ -75,7 +75,7 @@ Die Eingabe kann in ZWEI Formaten vorliegen:
 
 ---
 ## Wichtige Regeln
-2. Das Feld natural_language_description MUSS einen fließenden Text enthalten, der alle technischen Daten zusammenfasst.
-3. Produktname und Hersteller MÜSSEN in die Beschreibung integriert werden (falls im Input enthalten).
-4. Keine Daten erfinden – nur vorhandene Werte verwenden.
-5. Wenn Details zum Produkt in der Beschreibung gefunden wird, die in den Specs fehlen, können diese nach gleichem Schema ergänzt werden.
+- Produktnamen müssen **von SEO-Erweiterungen bereinigt** werden
+- Produktname und Hersteller MÜSSEN in die Beschreibung integriert werden (falls im Input enthalten).
+- Keine Daten erfinden – nur vorhandene Werte verwenden.
+- Wenn Details zum Produkt in der Beschreibung gefunden wird, die in den Specs fehlen, können diese nach den selben Regeln und Schema ergänzt werden.

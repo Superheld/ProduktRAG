@@ -10,7 +10,8 @@ Analysiere den folgenden Produkttext und generiere eine **mehrabsätzige Beschre
 1. **Extrahiere ALLE Informationen** aus dem Text – auch wenn sie verstreut sind.
 2. **Strukturiere sie in logische Absätze** - je Aspekt.
 3. **Erhalte alle technischen Daten 1:1** (keine Änderungen an Werten/Einheiten).
-4. **Füge Hersteller/Produktname/Kategorie hinzu**, falls nicht im Text enthalten.
+4. **Bereinige den Produktnamen** um SEO-Erweiterungen wie Kategorien oder technischen Daten (z.B. "Laborkühlschrank", "(+5Grad)", ...)
+4. **Füge Hersteller, bereinigten Produktnamen hinzu**, falls nicht im Text enthalten.
 5. **Erkläre Fachbegriffe kurz**, wenn nötig (z. B. *"Vakuum-Isolierung: sorgt für Energieeffizienz"*).
 
 ### Sprache
@@ -38,3 +39,4 @@ Analysiere den folgenden Produkttext und generiere eine **mehrabsätzige Beschre
 ### Wichtige Regeln
 - Jeder Absatz **muss Hersteller, Produktbezeichnung und Zusätze eingearbeitet haben** so das jeder Absatz eindeutig einem Produkt zugeordnet werden kann
 - Wenn Kategorie und andere Details vorliegen, die den Absatz kontextuell erweitern, füge das hinzu
+- Produktnamen müssen **von SEO-Erweiterungen bereinigt** werden

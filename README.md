@@ -13,6 +13,10 @@ Ein iteratives, lebendes Projekt zum Verstehen von Retrieval-Augmented Generatio
 
 ## 📔 Entwicklungstagebuch
 
+### 2025-10-19: Pipeline optimieren
+
+Die Roadmap ist geschichte :-) Das Ziel ist ja klar. Beim bearbeiten der Daten fällt mir auf, das die Pipeline nicht ordendlich strukturiert ist. Das möchte ich direkt zum optimieren nutzen, was sich sowieso abgezeichnet hat. Die Daten werden auf das beschränkt was für das Projekt notwendig ist und vielleicht irgendwann erweitert.
+
 ### 2025-10-18: Datenqualität verbessert, Retrieval-Evaluation erweitert
 
 **Erkenntnisse aus Phase 4:**
