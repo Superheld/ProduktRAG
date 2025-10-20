@@ -1,63 +1,55 @@
 # ProduktRAG - Ein RAG-Lernprojekt
 
-Ein iteratives, lebendes Projekt zum Verstehen von Retrieval-Augmented Generation (RAG). Dies ist ein **Entwicklungstagebuch**, das den kompletten Lernprozess dokumentiert - inklusive Rückschritten, Iterationen und Verbesserungen basierend auf Evaluationsdaten.
+## Was ist das hier?
 
-## 🎯 Philosophie
+Ein **Lernprojekt** zum Aufbau eines **RAG-Systems (Retrieval-Augmented Generation)** von Grund auf. Ziel ist es, die einzelnen Komponenten einer RAG-Pipeline zu verstehen und hands-on zu implementieren.
 
-- **Iterativ, nicht linear**: Bereits "fertige" Phasen werden basierend auf Evaluationsergebnissen überarbeitet
-- **Diskutieren → Coden → Debuggen**: Ich schreibe, Claude Code unterstützt
-- **Prozess > Ergebnis**: Der Lernweg ist wichtiger als perfekter Code
+**Status:** 🚧 Work in Progress - Iteratives Refactoring basierend auf Evaluationsergebnissen
 
----
+**Use Case (zum Lernen):** Produktkatalog-Suche mit semantischem Retrieval
+- Technische Spezifikationen finden
+- Feature-Vergleiche durchführen
+- Komplexe Anfragen beantworten
 
-## 📔 Entwicklungstagebuch
+## Daten
 
-### 2025-10-19: Pipeline optimieren
+**Rohdaten:** ~150 Produktbeschreibungen aus einem Webprojekt
+- Strukturierte Daten (JSON)
+- Produktbeschreibungen (unstrukturiert)
+- Technische Spezifikationen (Key-Value-Paare)
 
-Die Roadmap ist geschichte :-) Das Ziel ist ja klar. Beim bearbeiten der Daten fällt mir auf, das die Pipeline nicht ordendlich strukturiert ist. Das möchte ich direkt zum optimieren nutzen, was sich sowieso abgezeichnet hat. Die Daten werden auf das beschränkt was für das Projekt notwendig ist und vielleicht irgendwann erweitert.
+**Anreicherung:** LLM-basierte Aufbereitung (Mistral API)
+- Normalisierung von Beschreibungstexten
+- Umwandlung in natürliche Sprache für besseres Embedding
+- Metadaten-Extraktion
 
-### 2025-10-18: Datenqualität verbessert, Retrieval-Evaluation erweitert
+## Pipeline-Struktur
 
-**Erkenntnisse aus Phase 4:**
-- Spezifikationen brauchen mehr Kontext für bessere Embeddings
-- Retrieval-Metriken zeigen: Distanz allein reicht nicht
+```
+data/
+├── raw/                    # Rohdaten (products_raw.json)
+├── processed/              # Angereicherte Daten (products_enriched.json)
+└── promts/                 # System-Prompts und Schemas für LLM-Agents
 
-**Änderungen:**
-- ↻ **Phase 1 überarbeitet**: Produktnamen werden jetzt in Spec-Header eingebunden (`format_spec()`)
-- ↻ **Phase 1-3 neu generiert**: Chunks, Embeddings und Index mit verbesserter Datenqualität
-- → **Phase 4 erweitert**: Retrieval-Ergebnisse werden als JSON persistiert, neue Metriken vorbereitet (Cosine Similarity, Dot Product)
+notebooks/
+├── 1-data_preparation.ipynb    # LLM-basierte Datenanreicherung
+├── 2a-chunking.ipynb           # Dokumenten-Chunking
+├── 2b-test-generating.ipynb    # Test-Query-Generierung
+├── 3-embedding.ipynb           # Embedding-Generierung
+├── 4-indexing.ipynb            # ChromaDB-Indexierung
+├── 5-retrieval.ipynb           # Retrieval-Evaluation
+└── 6-generation.ipynb          # LLM-basierte Antwortgenerierung
+```
 
-**Nächste Schritte:**
-- Erweiterte Metrik-Analyse implementieren
-- Chunk-Type Distribution analysieren
-- Query-Schwierigkeit bewerten
+## Projekt-Organisation
 
----
+Das Projekt folgt der klassischen RAG-Pipeline:
 
-### 2025-10-XX: Phase 4 gestartet - Query Retrieval Evaluation
+1. **Data Preparation** → Rohdaten normalisieren und mit LLM anreichern
+2. **Chunking** → Dokumente in semantische Einheiten zerlegen
+3. **Embedding** → Text in Vektoren umwandeln
+4. **Indexing** → Vektoren in ChromaDB speichern
+5. **Retrieval** → Relevante Chunks zu Queries finden
+6. **Generation** → LLM generiert Antworten basierend auf Retrieved Chunks
 
-**Was funktioniert:**
-- ChromaDB Indexierung liefert erste Ergebnisse
-- 61 Test-Queries aus verschiedenen Kategorien
-
-**Erste Probleme erkannt:**
-- Spec-Chunks ohne Produktkontext schwer interpretierbar
-- Distance-Metrik allein gibt kein vollständiges Bild
-
-→ Führte zur ersten Iteration (siehe oben)
-
----
-
-### 2025-10-XX: Phasen 1-3 abgeschlossen
-
-- ✅ Phase 1: LLM-basierte Normalisierung mit Mistral
-- ✅ Phase 2: GBERT-Embeddings für 1800 Chunks
-- ✅ Phase 3: ChromaDB Indexierung
-
-## Technischer Stack
-
-- **Sprache**: Python (Pandas, NumPy, Jupyter Notebooks)
-- **Embeddings**: GBERT-large (deutsche Texte)
-- **Vector Database**: ChromaDB (lokal)
-- **LLM**: Mistral (für Datennormalisierung)
-- **Domäne**: Deutsche Produktdaten (Laborkühlschränke, medizinische Geräte)
+**Evaluation:** Retrieval-Performance wird mit manuell kuratierten Test-Queries (Ground Truth) gemessen.

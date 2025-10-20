@@ -1,21 +1,4 @@
 {
-  "metadata": {
-    "total_queries": 58,
-    "created_date": "2025-10-06",
-    "updated_date": "2025-10-12",
-    "description": "Test queries for RAG retrieval evaluation - Medical refrigerators (Medikamentenkühlschränke) with ground truth chunk_ids",
-    "dataset_info": {
-      "total_chunks": 1800,
-      "model": "deepset/gbert-large",
-      "product_types": [
-        "Liebherr Medikamentenkühlschränke",
-        "Kirsch Kühlschränke",
-        "Haier Kühlschränke",
-        "Laborgefrierschränke"
-      ]
-    }
-  },
-  "queries": {
     "technical_specs": [
       {
         "id": "tech_001",
@@ -510,4 +493,3 @@
       }
     ]
   }
-}
