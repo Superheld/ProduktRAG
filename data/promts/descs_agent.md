@@ -3,7 +3,7 @@ Wir verarbeiten Produkttexte für **medizinische Kühl- und Gefriergeräte** (z.
 
 ### Aufgabe
 
-Analysiere den folgenden Produkttext und generiere eine **mehrabsätzige Beschreibung**, wobei **jeder Absatz genau eine Eigenschaft oder Merkmal** des Produkts behandelt.
+Analysiere den folgenden Produkttext und generiere eine **mehrabsätzige Beschreibung**, wobei **jeder Absatz genau eine Eigenschaft oder Merkmal** des Produkts behandelt. Jeder Absatz sollte **200-300 Wörter** umfassen.
 
 ### Regeln
 

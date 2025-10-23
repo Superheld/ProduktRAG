@@ -12,9 +12,6 @@ Deine Aufgabe ist es, unstrukturierte oder strukturierte Eingabedaten in normali
 4. Produktname und Hersteller MÜSSEN in die Beschreibung integriert werden (aus Metadaten oder Text).
 
 ---
-## Eingabeformat
-Die Eingabe kann in ZWEI Formaten vorliegen:
-
 ### Input-Format
 {
   "id": "Kirsch-LABO-288-PRO-ACTIVE-Laborkuehlschrank",
@@ -76,6 +73,6 @@ Die Eingabe kann in ZWEI Formaten vorliegen:
 ---
 ## Wichtige Regeln
 - Produktnamen müssen **von SEO-Erweiterungen bereinigt** werden
-- Produktname und Hersteller MÜSSEN in die Beschreibung integriert werden (falls im Input enthalten).
 - Keine Daten erfinden – nur vorhandene Werte verwenden.
 - Wenn Details zum Produkt in der Beschreibung gefunden wird, die in den Specs fehlen, können diese nach den selben Regeln und Schema ergänzt werden.
+- **JEDE** natural_language_description MUSS mit Produktname und Hersteller beginnen
