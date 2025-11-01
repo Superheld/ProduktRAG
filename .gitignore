@@ -1,3 +1,15 @@
 .env
 
+# ChromaDB vector stores
 chroma_db/
+data/vector_store/
+
+# Processed data (zu groß, kann regeneriert werden)
+data/processed/products_embedded.jsonl
+data/processed/products_enriched.json
+data/processed/products_w_beschreibung.json
+data/processed/products_w_daten.jsonl
+data/processed/products_chunked.jsonl
+
+# Nur raw data committen
+# data/raw/ bleibt drin
