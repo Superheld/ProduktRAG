@@ -38,12 +38,14 @@ Erstelle **2-3 präzise Fragen**, die ein Nutzer stellen könnte und die **genau
 ]
 
 
-## Beispiele guter Fragen:
-- "Welchen Temperaturbereich hat der Kirsch LABO-288?"
-- "Verfügt der Liebherr SFFsg-5501 über eine automatische Abtauung?"
-- "Was sind die Außenmaße des Haier HYC-85GD?"
-- "Hat der Kirsch FROSTER LABEX-530 einen explosionsgeschützten Innenraum?"
+## Beispiele für Fragestrukturen (NICHT kopieren - eigene Fragen generieren!):
+- Format: "Welchen [SPEZIFIKATION] hat der/das [PRODUKT]?"
+- Format: "Verfügt der/das [PRODUKT] über [FEATURE]?"
+- Format: "Was sind die [TECHNISCHE_ANGABE] des [PRODUKT]?"
+- Format: "Hat der/das [PRODUKT] einen/eine [EIGENSCHAFT]?"
 
 ## Wichtig:
+- **Generiere NEUE Fragen basierend NUR auf dem gegebenen Chunk-Inhalt**
+- **Kopiere NICHT die obigen Format-Beispiele - nutze sie nur als Inspiration**
 - Alle Fragen müssen mit Informationen **nur aus diesem einen Chunk** beantwortbar sein
 - Keine Fragen, die mehrere Chunks oder Vergleiche benötigen

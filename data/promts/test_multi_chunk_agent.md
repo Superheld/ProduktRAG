@@ -36,12 +36,14 @@ Erstelle **1-2 komplexere Fragen**, die ein Nutzer stellen könnte und die **nur
 ]
 
 
-## Beispiele guter Multi-Chunk-Fragen:
-- "Welche Abmessungen, Temperaturbereich und Sicherheitsfeatures hat der Kirsch LABO-288?"
-- "Was sind die technischen Daten und welche Alarmfunktionen bietet der Liebherr SFFsg-5501?"
-- "Welche Ausstattungsmerkmale und welchen Energieverbrauch hat der Haier HYC-85GD?"
+## Beispiele für Fragestrukturen (NICHT kopieren - eigene Fragen generieren!):
+- Format: "Welche [ASPEKT1], [ASPEKT2] und [ASPEKT3] hat der/das [PRODUKT]?"
+- Format: "Was sind die [TECHNISCHE_DATEN] und welche [FEATURES] bietet der/das [PRODUKT]?"
+- Format: "Welche [EIGENSCHAFTEN] und welchen [SPEZIFIKATION] hat der/das [PRODUKT]?"
 
 ## Wichtig:
+- **Generiere NEUE Fragen basierend NUR auf dem gegebenen Chunk-Inhalt**
+- **Kopiere NICHT die obigen Format-Beispiele - nutze sie nur als Inspiration**
 - Alle Fragen müssen **mehrere Chunks kombinieren**
 - Keine Fragen, die nur mit einem Chunk beantwortbar wären
 - Die Chunks stammen vom gleichen Produkt - nutze das für zusammenhängende Fragen

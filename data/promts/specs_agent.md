@@ -12,51 +12,33 @@ Deine Aufgabe ist es, unstrukturierte oder strukturierte Eingabedaten in normali
 4. Produktname und Hersteller MÜSSEN in die Beschreibung integriert werden (aus Metadaten oder Text).
 
 ---
-### **Beispiel** Input-Format
+### **Beispiel** Input-Format (Platzhalter - nutze die echten Produktdaten!)
 {
-  "id": "Kirsch-LABO-288-PRO-ACTIVE-Laborkuehlschrank",
-  "url": "https://www.rainer-medizintechnik.de/Kirsch-LABO-288-PRO-ACTIVE-Laborkuehlschrank",
-  "title": "Kirsch LABO-288 PRO-ACTIVE Laborkühlschrank",
-  "description": "Der Kirsch LABO-288Laborkühlschrankmit PRO-Active-Steuerung besitzt eine statisch belüftete, geräuscharme, energiesparende,servicefreundlicheund hermetische gekapselte Kältemaschine für 220-240 V Wechselstrom. Andere Spannungen nach Anfrage.Verstellbare Füßesorgen für den Ausgleich von Bodenunebenheiten. Bei allen Geräten ist der Türanschlag wechselbar. Der Abtauvorgang ist automatisch durch zeitlich begrenzte und thermische Umkehr des Kältemittelkreislaufs überwacht. Das Tauwasser wird beimLABO-288Laborkühlschrank im Kältemaschinenraum vaporisiert. Die Isolierung ist 55 mm extra stark. [...]",
+  "id": "[PRODUKT-ID]",
+  "url": "[URL]",
+  "title": "[HERSTELLER] [MODELL] [KATEGORIE]",
+  "description": "[PRODUKTBESCHREIBUNG MIT TECHNISCHEN DETAILS]",
   "specs": [
     {
-      "key": "Außenmaße (einschl. Wandabstand) (BxTxH in cm)",
-      "value": "67 x 72 x 132"
-    },
-    {
-      "key": "Außenmaße bei 90° geöffneter Tür (BxT in cm)",
-      "value": "67 x 130"
-    },
-    {
-      "key": "Innenmaße (BxTxH in cm)",
-      "value": "53 x 50 x 100 (Nutztiefe oben 5 cm, unten 13 cm geringer)"
+      "key": "[SPEZIFIKATIONS-NAME]",
+      "value": "[WERT MIT EINHEIT]"
     }
   ]
 }
 
 ---
-## **Beispiel** Ausgabeformat
+## **Beispiel** Ausgabeformat (Platzhalter - generiere mit echten Daten!)
 [
   {
-    "key": "Außenmaße (einschl. Wandabstand) (BxTxH in cm)",
-    "value": "67 x 72 x 132",
-    "natural_language_description": "Der Kirsch LABO-288 PRO-ACTIVE hat die Außenmaße von 67 x 72 x 132 cm, einschließlich Wandabstand."
+    "key": "[SPEZIFIKATIONS-NAME]",
+    "value": "[ORIGINAL-WERT]",
+    "natural_language_description": "Der/Das [HERSTELLER] [MODELL] hat [BESCHREIBUNG DES WERTS IN NATÜRLICHER SPRACHE]."
   },
   {
-    "key": "Außenmaße bei 90° geöffneter Tür (BxT in cm)",
-    "value": "67 x 130"
-    "natural_language_description": "Bei 90 Grad geöffneter Tür hat der Kirsch LABO-288 PRO-ACTIVE die Außenmaße von 67 x 130 cm."
-  },
-  {
-    "key": "Abtauung automatisch",
-    "value": "ja"
-    "natural_language_description": "Die Abtauung des Kirsch LABO-288 PRO-ACTIVE funktioniert automatisch."
-  },
-  {
-    "key": "Kältemaschine, wassergekühlt",
-    "value": "-, optional"
-    "natural_language_description": "Die Kältemaschine des Kirsch LABO-288 PRO-ACTIVE ist nicht wassergekühlt, ist aber optional erhältlich."
-  },
+    "key": "[FEATURE-NAME]",
+    "value": "[JA/NEIN/OPTIONAL]",
+    "natural_language_description": "Der/Das [HERSTELLER] [MODELL] [HAT/HAT NICHT] [FEATURE-BESCHREIBUNG]."
+  }
 ]
 
 ---
