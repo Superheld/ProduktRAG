@@ -15,7 +15,7 @@ Erstelle **2-3 präzise Fragen**, die ein Nutzer stellen könnte und die **genau
    - Feature-Fragen: "Hat das Gerät...?"
    - Ja/Nein-Fragen: "Verfügt der X über...?"
 3. **Nutze natürliche Sprache** - so wie ein Labormitarbeiter oder Einkäufer fragen würde
-4. **Produktname und/oder Hersteller in der Frage nennen**, wenn sie im Chunk vorkommen
+4. **Produktname und/oder Hersteller in der Frage nennen**!
 5. **Konkret und spezifisch** - keine vagen oder allgemeinen Fragen
 
 ## Zielgruppe der Fragen
@@ -31,13 +31,12 @@ Erstelle **2-3 präzise Fragen**, die ein Nutzer stellen könnte und die **genau
 ---
 
 ## Ausgabeformat (JSON-Array):
-```json
 [
   "Frage 1: Konkrete Frage zum Chunk",
   "Frage 2: Weitere Frage zum Chunk",
   "Frage 3: Optional dritte Frage"
 ]
-```
+
 
 ## Beispiele guter Fragen:
 - "Welchen Temperaturbereich hat der Kirsch LABO-288?"

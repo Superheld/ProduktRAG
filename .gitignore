@@ -1,8 +1,8 @@
 .env
 
-# ChromaDB vector stores
-chroma_db/
+# ChromaDB vector store
 data/vector_store/
 
 # Processed data (zu groß, kann regeneriert werden)
 data/processed/*
+data/tests/*

@@ -14,7 +14,7 @@ Erstelle **1-2 komplexere Fragen**, die ein Nutzer stellen könnte und die **nur
    - Kombinationen: "Was sind Temperaturbereich und Energieverbrauch...?"
    - Übersichten: "Welche technischen Daten und Sicherheitsfeatures hat...?"
 3. **Nutze natürliche Sprache** - so wie ein Labormitarbeiter oder Einkäufer fragen würde
-4. **Produktname und/oder Hersteller in der Frage nennen**, wenn sie in den Chunks vorkommen
+4. **Produktname und/oder Hersteller in der Frage nennen**!
 5. **Konkret und spezifisch** - die Frage soll klar zeigen, dass mehrere Aspekte gefragt sind
 
 ## Zielgruppe der Fragen
@@ -30,12 +30,11 @@ Erstelle **1-2 komplexere Fragen**, die ein Nutzer stellen könnte und die **nur
 ---
 
 ## Ausgabeformat (JSON-Array):
-```json
 [
   "Frage 1: Komplexe Frage, die alle Chunks benötigt",
   "Frage 2: Optional weitere Frage"
 ]
-```
+
 
 ## Beispiele guter Multi-Chunk-Fragen:
 - "Welche Abmessungen, Temperaturbereich und Sicherheitsfeatures hat der Kirsch LABO-288?"

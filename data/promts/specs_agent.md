@@ -12,7 +12,7 @@ Deine Aufgabe ist es, unstrukturierte oder strukturierte Eingabedaten in normali
 4. Produktname und Hersteller MÜSSEN in die Beschreibung integriert werden (aus Metadaten oder Text).
 
 ---
-### Input-Format
+### **Beispiel** Input-Format
 {
   "id": "Kirsch-LABO-288-PRO-ACTIVE-Laborkuehlschrank",
   "url": "https://www.rainer-medizintechnik.de/Kirsch-LABO-288-PRO-ACTIVE-Laborkuehlschrank",
@@ -35,7 +35,7 @@ Deine Aufgabe ist es, unstrukturierte oder strukturierte Eingabedaten in normali
 }
 
 ---
-## Ausgabeformat
+## **Beispiel** Ausgabeformat
 [
   {
     "key": "Außenmaße (einschl. Wandabstand) (BxTxH in cm)",
