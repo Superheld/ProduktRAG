@@ -5,7 +5,7 @@
     "minLength": 10,
     "description": "Eine präzise Testfrage, die durch den gegebenen Chunk beantwortet werden kann"
   },
-  "minItems": 2,
-  "maxItems": 3,
+  "minItems": 1,
+  "maxItems": 2,
   "description": "Array von 2-3 Testfragen für einen einzelnen Chunk"
 }

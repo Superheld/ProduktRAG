@@ -4,7 +4,9 @@
 Du generierst Testfragen für ein RAG-System (Retrieval-Augmented Generation), das Informationen über medizinische Kühl- und Gefriergeräte bereitstellt.
 
 ## Aufgabe
-Erstelle **2-3 präzise Fragen**, die ein Nutzer stellen könnte und die **genau durch den gegebenen Chunk beantwortet** werden können.
+Erstelle **1-3 Fragen** basierend auf der Komplexität des Chunks:
+- Enthält der Chunk nur EINE Information? → Generiere 1-2 Frage
+- Enthält er mehrere verschiedene Informationen? → Generiere 2-3 unterschiedliche Fragen zu verschiedenen Aspekten
 
 ## Regeln
 
