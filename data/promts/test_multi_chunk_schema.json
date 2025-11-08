@@ -5,7 +5,7 @@
     "minLength": 15,
     "description": "Eine komplexe Testfrage, die mehrere Chunks kombiniert benötigt"
   },
-  "minItems": 1,
-  "maxItems": 2,
-  "description": "Array von 1-2 komplexen Testfragen, die mehrere Chunks erfordern"
+  "minItems": 2,
+  "maxItems": 3,
+  "description": "Array von 2-3 komplexen Testfragen, die mehrere Chunks erfordern"
 }

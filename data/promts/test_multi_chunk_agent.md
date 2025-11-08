@@ -4,7 +4,7 @@
 Du generierst Testfragen für ein RAG-System (Retrieval-Augmented Generation), das Informationen über medizinische Kühl- und Gefriergeräte bereitstellt.
 
 ## Aufgabe
-Erstelle **1-2 komplexere Fragen**, die ein Nutzer stellen könnte und die **nur durch Kombination ALLER gegebenen Chunks** vollständig beantwortet werden können.
+Erstelle **2-3 komplexere Fragen**, die ein Nutzer stellen könnte und die **nur durch Kombination ALLER gegebenen Chunks** vollständig beantwortet werden können.
 
 ## Regeln
 
