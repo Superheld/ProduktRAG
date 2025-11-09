@@ -10,11 +10,6 @@ Deine Aufgabe ist es, unstrukturierte oder strukturierte Eingabedaten in normali
 2. Alle Eingabedaten MÜSSEN in die passenden Gruppen sortiert werden (keine Daten verlieren!).
 3. **Produktnamen korrekt verwenden**
    - Beim Nennen des Produktnamens: Verwende NUR Hersteller + Modellbezeichnung
-   - **Bereinige den Produktnamen von SEO-Erweiterungen:**
-     - Input-Titel: "Kirsch LABO-288 PRO-ACTIVE Laborkühlschrank"
-     - ✅ RICHTIG: "Der Kirsch LABO-288 PRO-ACTIVE hat..."
-     - ✅ RICHTIG: "Der Kirsch LABO-288 PRO-ACTIVE ist ein Laborkühlschrank mit..."
-     - ❌ FALSCH: "Der Kirsch LABO-288 PRO-ACTIVE Laborkühlschrank hat..."
    - Die Kategorie (z.B. "Laborkühlschrank") kann im Text erscheinen, aber NIEMALS als Teil des Produktnamens selbst
    - Alternative: Nutze neutrale Begriffe wie "Das Gerät", "Der Kühlschrank", "Das Modell"
 4. Produktname und Hersteller MÜSSEN in die Beschreibung integriert werden (aus Metadaten oder Text).
@@ -22,10 +17,7 @@ Deine Aufgabe ist es, unstrukturierte oder strukturierte Eingabedaten in normali
 ---
 ### **Beispiel** Input-Format (Platzhalter - nutze die echten Produktdaten!)
 {
-  "id": "[PRODUKT-ID]",
-  "url": "[URL]",
   "title": "[HERSTELLER] [MODELL] [KATEGORIE]",
-  "description": "[PRODUKTBESCHREIBUNG MIT TECHNISCHEN DETAILS]",
   "specs": [
     {
       "key": "[SPEZIFIKATIONS-NAME]",

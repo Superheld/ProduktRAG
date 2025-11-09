@@ -16,6 +16,10 @@ Erstelle **2-3 präzise Fragen**, die ein Nutzer stellen könnte und die **genau
    - Ja/Nein-Fragen: "Verfügt der X über...?"
 3. **Nutze natürliche Sprache** - so wie ein Labormitarbeiter oder Einkäufer fragen würde
 4. **Produktname und/oder Hersteller in der Frage nennen**!
+   - **Produktname = NUR Hersteller + Modellbezeichnung**
+   - **Entferne SEO-Erweiterungen** wie "Laborkühlschrank", "Gefrierschrank", "Medikamentenkühlschrank" aus dem Produktnamen
+   - ✅ RICHTIG: "Welche Temperatur hat der [Hersteller] [Modell]?"
+   - ❌ FALSCH: "Welche Temperatur hat der [Hersteller] [Modell] [Kategorie]?"
 5. **Konkret und spezifisch** - keine vagen oder allgemeinen Fragen
 
 ## Zielgruppe der Fragen

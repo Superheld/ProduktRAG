@@ -14,9 +14,9 @@ Analysiere den folgenden Produkttext und führe folgende Aufgaben aus:
    - "Labortiefkühlschrank"
    - "Sonstiges"
 
-2. **Generiere eine mehrabsätzige Beschreibung**, wobei **jeder Absatz genau eine Eigenschaft oder Merkmal** des Produkts behandelt. Jeder Absatz sollte **50-100 Wörter** umfassen.
+2. **Generiere eine mehrabsätzige Beschreibung**, wobei **jeder Output-Absatz einem Original-Absatz aus dem Input-Text entspricht**. Jeder Absatz sollte **50-100 Wörter** umfassen.
 
-**Anzahl der Absätze:** 3-5 Absätze, je nach vorhandenen Informationen im Produkttext. Erstelle nur Absätze, für die ausreichend Informationen vorliegen.
+**Anzahl der Absätze:** 3-5 Absätze, je nach vorhandenen Absätzen im Input-Text. **Ein Input-Absatz = Ein Output-Absatz.** Erstelle nur Absätze, für die ausreichend Informationen vorliegen.
 
 ### Regeln
 
@@ -36,11 +36,6 @@ Analysiere den folgenden Produkttext und führe folgende Aufgaben aus:
    - Keine Vermutungen oder allgemeines Wissen ergänzen
 9. **Produktnamen korrekt verwenden**
    - Beim Nennen des Produktnamens: Verwende NUR Hersteller + Modellbezeichnung
-   - **Bereinige den Produktnamen von SEO-Erweiterungen:**
-     - Input-Titel: "Kirsch LABO-288 PRO-ACTIVE Laborkühlschrank"
-     - ✅ RICHTIG: "Der Kirsch LABO-288 PRO-ACTIVE bietet..."
-     - ✅ RICHTIG: "Der Kirsch LABO-288 PRO-ACTIVE ist ein Laborkühlschrank, der..."
-     - ❌ FALSCH: "Der Kirsch LABO-288 PRO-ACTIVE Laborkühlschrank bietet..."
    - Die Kategorie (z.B. "Laborkühlschrank") kann im Text erscheinen, aber NIEMALS als Teil des Produktnamens selbst
    - Alternative: Nutze neutrale Begriffe wie "Das Gerät", "Der Kühlschrank", "Das Modell"
 10. **Kategorie extrahieren:**
@@ -48,6 +43,13 @@ Analysiere den folgenden Produkttext und führe folgende Aufgaben aus:
    - Basierend auf Produkttyp im Titel und/oder Beschreibung
    - Bei Unsicherheit oder fehlenden Informationen: "Sonstiges"
    - Beispiele: "Laborkühlschrank" (aus Titel), "Medikamentenkühlschrank" (aus Beschreibung)
+
+11. **Bereinigten Produktnamen als Title extrahieren:**
+   - Extrahiere Hersteller + Modellbezeichnung aus dem Input-Text
+   - Entferne SEO-Erweiterungen (Kategorien, technische Daten in Klammern)
+   - ✅ RICHTIG: "[Hersteller] [Modellbezeichnung]"
+   - ❌ FALSCH: "[Hersteller] [Modellbezeichnung] [Kategorie]"
+   - ❌ FALSCH: "[Hersteller] [Modellbezeichnung] (+X°C bis +Y°C)"
 
 ### Sprache
 
@@ -59,13 +61,13 @@ Analysiere den folgenden Produkttext und führe folgende Aufgaben aus:
 ## Beispiele für gute und schlechte Absätze
 
 ### ✅ GUTER Absatz (ca. 70 Wörter):
-> "Der Kirsch MED-288 bietet einen Nutzinhalt (Kühlvolumen, Fassungsvermögen, Lagerkapazität) von 280 Litern. Damit eignet sich das Kühlgerät für mittlere bis große Laboranforderungen und kann mehrere Medikamentenkisten oder Probenbehälter gleichzeitig lagern. Die Innenausstattung umfasst 5 höhenverstellbare Ablagen (Roste, Einlegeböden), die eine flexible Raumaufteilung für unterschiedliche Behältergrößen ermöglichen."
+> "Der [Hersteller] [Modell] bietet einen Nutzinhalt (Kühlvolumen, Fassungsvermögen, Lagerkapazität) von [X] Litern. Damit eignet sich das Kühlgerät für mittlere bis große Laboranforderungen und kann mehrere Medikamentenkisten oder Probenbehälter gleichzeitig lagern. Die Innenausstattung umfasst [Y] höhenverstellbare Ablagen (Roste, Einlegeböden), die eine flexible Raumaufteilung für unterschiedliche Behältergrößen ermöglichen."
 
 **Warum gut:**
-- Produktname OHNE Kategorie-Suffix ("Kirsch MED-288", NICHT "Kirsch MED-288 Laborkühlschrank")
+- Produktname OHNE Kategorie-Suffix ("[Hersteller] [Modell]", NICHT "[Hersteller] [Modell] [Kategorie]")
 - Synonyme in Klammern ("Kühlvolumen, Fassungsvermögen")
 - Praktischer Kontext ("für Medikamentenkisten")
-- Technische Daten 1:1 übernommen (280 Liter, 5 Ablagen)
+- Technische Daten 1:1 übernommen
 - Sachlich, keine Werbesprache
 
 ### ❌ SCHLECHTER Absatz:
@@ -88,7 +90,8 @@ Gib ein JSON-Objekt zurück mit der extrahierten Kategorie und den generierten A
 
 ```json
 {
-  "category": "Laborkühlschrank",
+  "title": "Hersteller Modellbezeichnung (OHNE Kategorie, OHNE technische Daten)",
+  "category": "Kategorie aus der vorgegebenen Liste",
   "descriptions": [
     "Absatz 1: Produktidentifikation + Hauptzweck (Hersteller, Produktname, Einsatzbereich)",
     "Absatz 2: Technische Daten (Maße, Gewicht, Volumen, Temperaturbereich)",
@@ -105,8 +108,9 @@ Gib ein JSON-Objekt zurück mit der extrahierten Kategorie und den generierten A
 - Nicht alle 5 Absätze sind Pflicht - nur die, für die ausreichend Daten vorliegen
 
 ### Wichtige Regeln
+- **Ein Input-Absatz = Ein Output-Absatz** - Behalte die Absatz-Struktur des Original-Texts bei
 - Jeder Absatz **muss Hersteller + bereinigte Produktbezeichnung eingearbeitet haben** so das jeder Absatz eindeutig einem Produkt zugeordnet werden kann
-- **Produktname = NUR Hersteller + Modell** (z.B. "Kirsch LABO-288 PRO-ACTIVE", NICHT "Kirsch LABO-288 PRO-ACTIVE Laborkühlschrank")
+- **Produktname = NUR Hersteller + Modell** (OHNE Kategorie-Suffix)
 - Die Kategorie kann separat im Text erscheinen (z.B. "...ist ein Laborkühlschrank, der...")
 - Produktnamen müssen **von SEO-Erweiterungen bereinigt** werden (Kategorie-Begriffe wie "Laborkühlschrank", "Gefrierschrank" etc. aus dem Namen entfernen)
 - **KEINE Halluzination:**

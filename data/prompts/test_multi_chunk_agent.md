@@ -15,6 +15,10 @@ Erstelle **2-3 komplexere Fragen**, die ein Nutzer stellen könnte und die **nur
    - Übersichten: "Welche technischen Daten und Sicherheitsfeatures hat...?"
 3. **Nutze natürliche Sprache** - so wie ein Labormitarbeiter oder Einkäufer fragen würde
 4. **Produktname und/oder Hersteller in der Frage nennen**!
+   - **Produktname = NUR Hersteller + Modellbezeichnung**
+   - **Entferne SEO-Erweiterungen** wie "Laborkühlschrank", "Gefrierschrank", "Medikamentenkühlschrank" aus dem Produktnamen
+   - ✅ RICHTIG: "Welche Features und Abmessungen hat der [Hersteller] [Modell]?"
+   - ❌ FALSCH: "Welche Features hat der [Hersteller] [Modell] [Kategorie]?"
 5. **Konkret und spezifisch** - die Frage soll klar zeigen, dass mehrere Aspekte gefragt sind
 
 ## Zielgruppe der Fragen
@@ -25,8 +29,11 @@ Erstelle **2-3 komplexere Fragen**, die ein Nutzer stellen könnte und die **nur
 ---
 
 ## Eingabe (Chunks):
-{chunks_text}
-
+[
+  "[Chunk 1]",
+  "[CHunk 2]",
+  ...
+]
 ---
 
 ## Ausgabeformat (JSON-Array):

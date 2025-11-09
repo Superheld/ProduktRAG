@@ -1,6 +1,11 @@
 {
   "type": "object",
   "properties": {
+    "title": {
+      "type": "string",
+      "minLength": 5,
+      "description": "Bereinigter Produktname: Hersteller + Modellbezeichnung (OHNE Kategorie, OHNE technische Daten in Klammern)"
+    },
     "category": {
       "type": "string",
       "enum": [
@@ -26,6 +31,6 @@
       "description": "Array von 3-5 Absätzen, jeder beschreibt eine Produkteigenschaft"
     }
   },
-  "required": ["category", "descriptions"],
+  "required": ["title", "category", "descriptions"],
   "additionalProperties": false
 }
