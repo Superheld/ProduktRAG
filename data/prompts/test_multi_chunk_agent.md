@@ -29,18 +29,11 @@ Erstelle **2-3 komplexere Fragen**, die ein Nutzer stellen könnte und die **nur
 ---
 
 ## Eingabe (Chunks):
-[
-  "[Chunk 1]",
-  "[CHunk 2]",
-  ...
-]
+["[Chunk 1]", "[CHunk 2]"]
 ---
 
 ## Ausgabeformat (JSON-Array):
-[
-  "Frage 1: Komplexe Frage, die alle Chunks benötigt",
-  "Frage 2: Optional weitere Frage"
-]
+["Frage 1: Komplexe Frage, die alle Chunks benötigt", "Frage 2: Optional weitere Frage"]
 
 
 ## Beispiele für Fragestrukturen (NICHT kopieren - eigene Fragen generieren!):
