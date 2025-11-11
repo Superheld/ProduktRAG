@@ -27,42 +27,25 @@ Deine Aufgabe ist es, unstrukturierte oder strukturierte Eingabedaten in normali
 }
 
 ---
-## **Beispiel** Ausgabeformat (Platzhalter - generiere mit echten Daten!)
-[
-  {
-    "key": "[SPEZIFIKATIONS-NAME]",
-    "value": "[ORIGINAL-WERT]",
-    "natural_language_description": "Der/Das [HERSTELLER] [MODELL] hat [BESCHREIBUNG DES WERTS IN NATÜRLICHER SPRACHE]."
-  },
-  {
-    "key": "[FEATURE-NAME]",
-    "value": "[JA/NEIN/OPTIONAL]",
-    "natural_language_description": "Der/Das [HERSTELLER] [MODELL] [HAT/HAT NICHT] [FEATURE-BESCHREIBUNG]."
-  }
-]
-
----
 ## Anweisungen für die Verarbeitung
 1. Analysiere die Eingabe und ordne alle Daten den passenden Gruppen/Keys zu.
 2. Normalisiere Einheiten:
    - Längenmaße → cm (mm→cm, m→cm)
    - Gewichte → kg (g→kg)
    - Volumina → l (ml→l)
-3. Generiere die natürlichsprachliche Beschreibung (2-3 Sätze):
+3. Generiere die natürlichsprachliche Beschreibung im kompakten, telegrafischen Stil:
 
-   **Erster Satz:** Klare Aussage über das Feature/den Wert
-   - Bei Wert "-" → nutze Verneinung ("hat keine/keinen", "verfügt nicht über", "ohne")
-   - Bei konkretem Wert → beschreibe ihn klar und verständlich
+   **Format:** "[HERSTELLER] [MODELL]: [ATTRIBUT] [WERT]"
 
-   **Zweiter Satz (optional, aber empfohlen):** Kontext aus verwandten Specs
-   - Suche nach thematisch verbundenen Specs im selben Produkt
-   - Verknüpfe Information sinnvoll (z.B. bei "Glastür: -" → "Die Innenausstattung ist mit 3 Rosten zugänglich")
-   - **NUR vorhandene Daten nutzen - KEINE Annahmen oder Erfindungen!**
+   **Regeln:**
+   - Minimale Syntax, maximale Informationsdichte
+   - Bei Wert "-" → nutze Verneinung ("ohne", "keine/keinen")
+   - Bei konkretem Wert → beschreibe ihn präzise mit Einheit
 
    **Findbarkeit optimieren:**
-   - Nutze Synonyme und alternative Begriffe (z.B. "Energieverbrauch" + "Stromkosten")
-   - Gib praktische Bedeutung an (z.B. "230V" → "für europäische Standardsteckdosen geeignet")
+   - Nutze Synonyme und alternative Begriffe in Klammern (z.B. "Nutzinhalt (Kühlvolumen, Fassungsvermögen)")
    - Verwende Fachbegriffe UND alltagssprachliche Formulierungen
+   - Keine erfundenen Daten - NUR vorhandene Werte verwenden!
 
 ---
 ## Beispiele für Natural Language Descriptions
@@ -71,42 +54,53 @@ Deine Aufgabe ist es, unstrukturierte oder strukturierte Eingabedaten in normali
 
 **Feature mit Wert:**
 - Key: "Nutzinhalt", Value: "280 l"
-- Description: "Das Gerät bietet einen Nutzinhalt (Kühlvolumen) von 280 Litern. Damit eignet es sich für mittlere bis große Laboranforderungen."
+- Description: "Liebherr LKPv 8420: Nutzinhalt (Kühlvolumen, Fassungsvermögen) 280 Liter"
+
+**Feature mit Wert und Synonymen:**
+- Key: "Nennspannung", Value: "230V"
+- Description: "Liebherr LKPv 8420: Nennspannung (Betriebsspannung, Stromversorgung) 230V für europäische Standardsteckdosen"
 
 **Feature mit "-" (nicht vorhanden):**
 - Key: "Glastür", Value: "-"
-- Other specs: "Rost mit Auflegern: 3"
-- Description: "Der Kühlschrank hat keine Glastür. Die Innenausstattung ist mit 3 Rosten mit Auflegern zugänglich."
+- Description: "Liebherr LKPv 8420: ohne Glastür"
 
-**Feature mit praktischer Bedeutung:**
-- Key: "Nennspannung", Value: "230V"
-- Description: "Die Nennspannung beträgt 230V und ist damit für europäische Standardsteckdosen geeignet. Ein Starkstromanschluss ist nicht erforderlich."
+**Numerischer Wert:**
+- Key: "Anzahl Roste", Value: "3"
+- Description: "Liebherr LKPv 8420: 3 Roste mit Auflegern (Einlegeböden, Ablagen)"
 
 ### ❌ SCHLECHTE Beispiele (NIEMALS so machen!):
 
+**Zu viele Füllwörter:**
+- Key: "Nutzinhalt", Value: "280 l"
+- Description: "Das Gerät bietet einen Nutzinhalt von 280 Litern. Damit eignet es sich für mittlere bis große Laboranforderungen." ❌
+- Problem: Zu viel grammatikalisches Rauschen, zu wenig Informationsdichte
+
 **Halluzination von Daten:**
 - Key: "Glastür", Value: "-"
-- Description: "Der Kühlschrank hat keine Glastür. Stattdessen ist eine robuste Edelstahltür verbaut." ❌
+- Description: "Liebherr LKPv 8420: ohne Glastür, stattdessen robuste Edelstahltür" ❌
 - Problem: "Edelstahltür" steht NICHT in den Daten!
-
-**Zu kurz, kein Kontext:**
-- Key: "Nutzinhalt", Value: "280 l"
-- Description: "Das Gerät hat 280 Liter Volumen." ❌
-- Problem: Nur 1 Satz, keine praktische Einordnung, keine Synonyme
 
 **Vermutungen:**
 - Key: "Temperaturbereich", Value: "-"
-- Description: "Der Temperaturbereich ist nicht angegeben, liegt vermutlich zwischen 2-8°C." ❌
+- Description: "Liebherr LKPv 8420: Temperaturbereich nicht angegeben, vermutlich 2-8°C" ❌
 - Problem: "vermutlich" ist eine Erfindung!
+
+**Produktname falsch:**
+- Key: "Nutzinhalt", Value: "280 l"
+- Description: "Liebherr LKPv 8420 Laborkühlschrank: Nutzinhalt 280 Liter" ❌
+- Problem: "Laborkühlschrank" ist die Kategorie, nicht Teil des Produktnamens!
 
 ---
 ## Wichtige Regeln
 - Produktnamen müssen **von SEO-Erweiterungen bereinigt** werden
-- Keine Daten erfinden – nur vorhandene Werte verwenden.
-- Wenn Details zum Produkt in der Beschreibung gefunden wird, die in den Specs fehlen, können diese nach den selben Regeln und Schema ergänzt werden.
-- **JEDE** natural_language_description MUSS mit Produktname und Hersteller beginnen
-- **Kontextanreicherung NUR aus vorhandenen Daten:**
-  - Du darfst AUSSCHLIESSLICH Informationen aus den vorliegenden Produktspecs verwenden
+- Keine Daten erfinden – nur vorhandene Werte verwenden
+- Wenn Details zum Produkt in der Beschreibung gefunden wird, die in den Specs fehlen, können diese nach den selben Regeln und Schema ergänzt werden
+- **JEDE** natural_language_description MUSS mit "[HERSTELLER] [MODELL]:" beginnen
+- **Maximale Informationsdichte, minimale Syntax:**
+  - Fast jedes Wort muss informationstragend sein
+  - Keine Füllwörter wie "hat", "beträgt", "verfügt über"
+  - Synonyme in Klammern für besseres Retrieval
+- **NUR vorhandene Daten:**
   - NIEMALS Eigenschaften erfinden, vermuten oder aus allgemeinem Wissen ergänzen
-  - Beispiel FALSCH: "Der Kühlschrank hat keine Glastür. Stattdessen ist eine Edelstahltür verbaut." ❌
-  - Beispiel RICHTIG: "Der Kühlschrank hat keine Glastür. Die Innenausstattung ist mit 3 Rosten mit Auflegern zugänglich." ✓
+  - Beispiel FALSCH: "Liebherr LKPv 8420: ohne Glastür, stattdessen Edelstahltür" ❌
+  - Beispiel RICHTIG: "Liebherr LKPv 8420: ohne Glastür" ✓

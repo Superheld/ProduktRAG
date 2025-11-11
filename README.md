@@ -4,7 +4,7 @@
 
 Ein **Lernprojekt** zum Aufbau eines **RAG-Systems (Retrieval-Augmented Generation)** von Grund auf. Ziel ist es, die einzelnen Komponenten einer RAG-Pipeline zu verstehen und hands-on zu implementieren.
 
-**Status:** 🚧 Work in Progress - Iteratives Refactoring basierend auf Evaluationsergebnissen
+**Status:** 🚧 Work in Progress - Retrieval-Evaluation läuft, LLM-Prompts iterativ verbessert
 
 **Use Case (zum Lernen):** Produktkatalog-Suche mit semantischem Retrieval
 - Technische Spezifikationen finden
@@ -19,17 +19,19 @@ Ein **Lernprojekt** zum Aufbau eines **RAG-Systems (Retrieval-Augmented Generati
 - Technische Spezifikationen (Key-Value-Paare)
 
 **Anreicherung:** LLM-basierte Aufbereitung (Mistral API)
-- Normalisierung von Beschreibungstexten
-- Umwandlung in natürliche Sprache für besseres Embedding
-- Metadaten-Extraktion
+- Normalisierung von Beschreibungstexten mit Synonym-Ergänzung
+- Umwandlung technischer Specs in natürliche Sprache für besseres Embedding
+- Kategorie-Extraktion und Produktnamen-Bereinigung (SEO-Suffixe entfernen)
+- Anti-Halluzination-Techniken in Prompts
 
 ## Pipeline-Struktur
 
 ```
 data/
-├── raw/                    # Rohdaten (products_raw.json)
-├── processed/              # Angereicherte Daten (products_enriched.json)
-└── promts/                 # System-Prompts und Schemas für LLM-Agents
+├── raw/                    # Rohdaten (products_raw.json, products_raw.jsonl)
+├── processed/              # Angereicherte Daten (products_enriched.json, products_chunked.jsonl)
+├── prompts/                # System-Prompts und JSON-Schemas für LLM-Agents
+└── tests/                  # Generierte Testfragen (specs_question.json, multi_question.json)
 
 notebooks/
 ├── 1-data_preparation.ipynb    # LLM-basierte Datenanreicherung
@@ -52,4 +54,40 @@ Das Projekt folgt der klassischen RAG-Pipeline:
 5. **Retrieval** → Relevante Chunks zu Queries finden
 6. **Generation** → LLM generiert Antworten basierend auf Retrieved Chunks
 
-**Evaluation:** Retrieval-Performance wird mit manuell kuratierten Test-Queries (Ground Truth) gemessen.
+**Evaluation:** Retrieval-Performance wird mit LLM-generierten Test-Queries gemessen:
+- Single-Chunk-Fragen (gezielt für eine Spec)
+- Multi-Chunk-Fragen (benötigen mehrere Chunks zur Beantwortung)
+- Metriken: Recall@k, MRR (Mean Reciprocal Rank)
+
+## Aktuelle Herausforderungen & Learnings
+
+### LLM Prompt Engineering
+- **Problem:** LLM nutzt Beispiele aus Prompts als Fallback statt eigene Inhalte zu generieren
+- **Lösung:** Abstrakte Platzhalter (`[Hersteller]`, `[Modell]`) statt konkreter Beispiele
+- **Problem:** Produktnamen enthielten SEO-Kategorien (z.B. "Kirsch LABO-288 Laborkühlschrank")
+- **Lösung:** Explizite Bereinigungsregeln + separate Kategorie-Extraktion
+
+### JSON Schema Enforcement
+- **Problem:** Mistral API gibt JSON manchmal mit Markdown Code Fences zurück (` ```json ... ``` `)
+- **Lösung:** Pydantic-Schemas verwenden statt raten 
+- **Lerneffekt:** Dokumentation lesen, nicht nur API-Specs! 📚
+
+### Retrieval-Qualität & Embedding-Optimierung
+- **Problem:** Vollständige Sätze mit viel Kontext verschlechtern das Retrieval
+- **Erkenntnis:** Mehr natürliche Sprache = mehr grammatikalisches Rauschen im Embedding
+- **Lösung:** Telegrafischer Stil für Specs (`[HERSTELLER] [MODELL]: [ATTRIBUT] [WERT]`)
+  - Maximale Informationsdichte, minimale Syntax
+  - Synonyme in Klammern für bessere Findbarkeit
+  - Fast jedes Token ist informationstragend
+- **Testing:** _[Ergebnisse folgen nach Evaluation]_
+
+### Data Engineering & Quelldaten-Optimierung
+- **Learning:** Strukturierte Quelldaten sind besser handhabbar als unstrukturierte Texte
+- **Preprocessing wichtig:** Saubere Normalisierung (Einheiten, Produktnamen) vor LLM-Verarbeitung
+- **LLM-Agents gezielt einsetzen:** Specs-Agent für strukturierte Normalisierung + NL-Generierung
+
+## Tech Stack
+- **LLM:** Mistral API (mistral-medium-2508) mit JSON Schema
+- **Embeddings:** deepset/gbert-large
+- **Vector Store:** ChromaDB
+- **Dev:** Python, Jupyter Notebooks

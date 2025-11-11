@@ -85,29 +85,7 @@ Analysiere den folgenden Produkttext und führe folgende Aufgaben aus:
 {text}
 
 ---
-### Ausgabeformat (JSON-Objekt):
-Gib ein JSON-Objekt zurück mit der extrahierten Kategorie und den generierten Absätzen:
-
-```json
-{
-  "title": "Hersteller Modellbezeichnung (OHNE Kategorie, OHNE technische Daten)",
-  "category": "Kategorie aus der vorgegebenen Liste",
-  "descriptions": [
-    "Absatz 1: Produktidentifikation + Hauptzweck (Hersteller, Produktname, Einsatzbereich)",
-    "Absatz 2: Technische Daten (Maße, Gewicht, Volumen, Temperaturbereich)",
-    "Absatz 3: Funktionen/Sonderausstattungen (Alarme, Steuerung, Zertifizierungen)",
-    "Absatz 4: Einsatzbereiche/Zielgruppe (Kliniken, Labore, Blutbanken etc.) - OPTIONAL",
-    "Absatz 5: Sicherheits- und Compliance-Features (DIN-Normen, ATEX etc.) - OPTIONAL"
-  ]
-}
-```
-
-**Wichtig:**
-- Die Kategorie muss **exakt** aus der vorgegebenen Liste stammen
-- Erstelle **3-5 Absätze**, je nach verfügbaren Informationen im Input-Text
-- Nicht alle 5 Absätze sind Pflicht - nur die, für die ausreichend Daten vorliegen
-
-### Wichtige Regeln
+## Wichtige Regeln
 - **Ein Input-Absatz = Ein Output-Absatz** - Behalte die Absatz-Struktur des Original-Texts bei
 - Jeder Absatz **muss Hersteller + bereinigte Produktbezeichnung eingearbeitet haben** so das jeder Absatz eindeutig einem Produkt zugeordnet werden kann
 - **Produktname = NUR Hersteller + Modell** (OHNE Kategorie-Suffix)
