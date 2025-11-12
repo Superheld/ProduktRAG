@@ -4,7 +4,7 @@
 
 Ein **Lernprojekt** zum Aufbau eines **RAG-Systems (Retrieval-Augmented Generation)** von Grund auf. Ziel ist es, die einzelnen Komponenten einer RAG-Pipeline zu verstehen und hands-on zu implementieren.
 
-**Status:** 🚧 Work in Progress - Retrieval-Evaluation läuft, LLM-Prompts iterativ verbessert
+**Status:** 🚧 Work in Progress - Retrieval-Evaluation läuft, Reranking-Setup in Arbeit
 
 **Use Case (zum Lernen):** Produktkatalog-Suche mit semantischem Retrieval
 - Technische Spezifikationen finden
@@ -77,9 +77,19 @@ Das Projekt folgt der klassischen RAG-Pipeline:
 - **Erkenntnis:** Mehr natürliche Sprache = mehr grammatikalisches Rauschen im Embedding
 - **Lösung:** Telegrafischer Stil für Specs (`[HERSTELLER] [MODELL]: [ATTRIBUT] [WERT]`)
   - Maximale Informationsdichte, minimale Syntax
-  - Synonyme in Klammern für bessere Findbarkeit
   - Fast jedes Token ist informationstragend
-- **Testing:** _[Ergebnisse folgen nach Evaluation]_
+  - **Resultat:** Recall@10 verbessert von ~50% auf 78% durch optimierte Chunk-Formulierung
+- **Problem:** Subtyp-Verwechslung bei ähnlichen Modellnummern (z.B. "8201" vs "8211")
+- **Erkenntnis:** Embeddings können sehr ähnliche Zahlenfolgen nicht gut unterscheiden
+  - Token-Overlap: ["82", "01"] vs ["82", "11"] → nur 1 Token unterschiedlich
+  - Semantische Distanz zu gering für zuverlässige Unterscheidung
+- **Optimierungsansatz: Reranking mit Cross-Encoder**
+  - Two-Stage Retrieval: Bi-Encoder (schnell, ~20 Kandidaten) → Cross-Encoder (genau, Top-10)
+  - Modell: BAAI/bge-reranker-v2-m3 (multilingual, optimiert für kurze Texte)
+  - Cross-Encoder vergleicht Query + Dokument direkt (höhere Präzision als Embedding-Distanz)
+  - **Status:** Implementierung vorbereitet, Performance-Testing ausstehend (RAM-Constraints)
+  - **Nächste Schritte:** Reranking auf separatem Notebook oder kleineres Modell testen
+- **Testing:** _[Baseline-Evaluation läuft, Reranking-Vergleich folgt]_
 
 ### Data Engineering & Quelldaten-Optimierung
 - **Learning:** Strukturierte Quelldaten sind besser handhabbar als unstrukturierte Texte
@@ -88,6 +98,7 @@ Das Projekt folgt der klassischen RAG-Pipeline:
 
 ## Tech Stack
 - **LLM:** Mistral API (mistral-medium-2508) mit JSON Schema
-- **Embeddings:** deepset/gbert-large
+- **Embeddings:** deepset/gbert-large (Bi-Encoder)
+- **Reranking:** BAAI/bge-reranker-v2-m3 (Cross-Encoder)
 - **Vector Store:** ChromaDB
 - **Dev:** Python, Jupyter Notebooks
