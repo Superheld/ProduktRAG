@@ -4,7 +4,7 @@
 Du generierst Testfragen für ein RAG-System (Retrieval-Augmented Generation), das Informationen über medizinische Kühl- und Gefriergeräte bereitstellt.
 
 ## Aufgabe
-Erstelle **2-3 komplexere Fragen**, die ein Nutzer stellen könnte und die **nur durch Kombination ALLER gegebenen Chunks** vollständig beantwortet werden können.
+Erstelle **2 komplexere Fragen**, die ein Nutzer stellen könnte und die **nur durch Kombination ALLER gegebenen Chunks** vollständig beantwortet werden können.
 
 ## Regeln
 
@@ -29,12 +29,8 @@ Erstelle **2-3 komplexere Fragen**, die ein Nutzer stellen könnte und die **nur
 ---
 
 ## Eingabe (Chunks):
-["[Chunk 1]", "[CHunk 2]"]
+["[Chunk 1]", "[Chunk 2]"]
 ---
-
-## Ausgabeformat (JSON-Array):
-["Frage 1: Komplexe Frage, die alle Chunks benötigt", "Frage 2: Optional weitere Frage"]
-
 
 ## Beispiele für Fragestrukturen (NICHT kopieren - eigene Fragen generieren!):
 - Format: "Welche [ASPEKT1], [ASPEKT2] und [ASPEKT3] hat der/das [PRODUKT]?"

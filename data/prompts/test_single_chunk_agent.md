@@ -34,10 +34,6 @@ Erstelle **2-3 präzise Fragen**, die ein Nutzer stellen könnte und die **genau
 
 ---
 
-## Ausgabeformat (JSON-Array):
-["Frage 1: Konkrete Frage zum Chunk", "Frage 2: Weitere Frage zum Chunk", "Frage 3: Optional dritte Frage"]
-
-
 ## Beispiele für Fragestrukturen (NICHT kopieren - eigene Fragen generieren!):
 - Format: "Welchen [SPEZIFIKATION] hat der/das [PRODUKT]?"
 - Format: "Verfügt der/das [PRODUKT] über [FEATURE]?"
